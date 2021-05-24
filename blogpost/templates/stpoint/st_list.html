@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>ストレス得点表リスト</title>
+  </head>
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+{% load random_tags %}
+
+  <h3>ストレス得点表</h3>
+  <a class="btn btn-warning" href="{% url 'St_create' %}" role="button">新規作成</a>
+  <table border="1" style="border-collapse: collapse">
+  
+  <tbody>
+    <tr>
+      <td style="text-align:center">項目＼日付</td>
+      {% for item in object_list %}
+        <td style="text-align:center">{{ item.point_date|date:"n/j"  }}<BR>
+        <a class="btn btn-primary" href="{% url 'St_update' item.pk %}" role="button">編集</a></td>
+      {% endfor %}
+    </tr>
+
+
+    {% if stNames.0 != None %}
+      <tr>
+        <td style="text-align:center">{{ stNames.0 }}</td>
+        {% for item in object_list %}
+          <td style="text-align:center">{% tfcheck item.point1 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.1 != None %}
+      <tr>
+        <td>{{ stNames.1 }}</td>
+        {% for item in object_list %}
+          <td style="text-align:center">{% tfcheck item.point2 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.2 != None %}
+      <tr>
+        <td>{{ stNames.2 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point3 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.3 != None %}
+      <tr>
+        <td>{{ stNames.3 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point4 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.4 != None %}
+      <tr>
+        <td>{{ stNames.4 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point5 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+
+  </tbody>
+
+  <nav aria-label="Page navigation example">
+
+      <ul class="pagination justify-content-center pagination-lg g-mt-28 g-mb-28">
+          <!-- 前へ の部分 -->
+          {% if page_obj.has_previous %}
+              <li class="page-item">
+                  <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                      <span aria-hidden="true">&laquo;</span>
+                  </a>
+              </li>
+          {% endif %}
+
+          <!-- 数字の部分 -->
+          {% for num in page_obj.paginator.page_range %}
+              {% if num <= page_obj.number|add:5 and num >= page_obj.number|add:-5 %}
+
+                  {% if page_obj.number == num %}
+                      <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+                  {% else %}
+                      <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                  {% endif %}
+              {% endif %}
+          {% endfor %}
+
+          <!-- 次へ の部分 -->
+          {% if page_obj.has_next %}
+              <li class="page-item">
+                  <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                      <span aria-hidden="true">&raquo;</span>
+                  </a>
+              </li>
+          {% endif %}
+      </ul>
+
+  </nav>
+
+{% endblock content %}
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    -->
+    
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    
+  </body>
+</html>

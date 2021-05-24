@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+    <div class='container'>
+        <div class="card">
+            <h5 class="card-header">{{ object.SRM_date }}</h5>
+            <h5 class="card-header">{{ SRMfields }}</h5>
+            {% comment %} object.SRM_date|date:"y/n/j" {% endcomment %}
+            <div class="card-body">
+                <h5 class="card-title">{{ object.action_time1 }}</h5>
+                <p class="card-text">{{ object.action_value1 }}</p>
+                <a class="btn btn-primary" href="{% url 'SRMlist' %}" >一覧へ</a>
+                {% comment %} <a class="btn btn-primary" href="{% url 'update' object.pk %}" >編集する</a> {% endcomment %}
+                {% comment %} <a class="btn btn-primary" href="{% url 'delete' object.pk %}" >削除</a> {% endcomment %}
+        </div>
+    </div>
+{% endblock content %}

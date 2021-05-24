@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<div class='container'>
+    <div class='card'>
+        <h5 class="p-3 mb-2 bg-success text-white">ストレス得点表項目設定</h5>
+    <div class="card-body">
+        <form action="" method="POST">{% csrf_token %}
+            <table>
+            {{form.as_table}}
+            </table>
+            <input type="submit" value="更新する">
+            <a class="btn btn-primary" href="{% url 'Word_list' %}" role="button">戻る</a>
+        </form>
+    </div>
+
+</div>
+
+{% endblock content %}

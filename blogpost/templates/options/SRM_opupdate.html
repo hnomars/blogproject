@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<div class='container'>
+    <div class='card'>
+        <h5 class="p-3 mb-2 bg-success text-white">SRM項目設定</h5>
+        <a>　項目１は昨日の就寝で固定</a>
+        <a>　項目２は起床で固定</a>
+    <div class="card-body">
+        <form action="" method="POST">{% csrf_token %}
+            <table class="table table-striped table-hover table-sm">
+                <thead>
+                    
+                </thead>
+                <tbody>
+                {{form.as_table}}
+                </tbody>
+            </table>
+            <input type="submit" value="更新する">
+        </form>
+    </div>
+            <a class="btn btn-primary" href="{% url 'SRM_oplist' %}" role="button">戻る</a>
+</div>
+
+{% endblock content %}

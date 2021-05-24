@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+  </head>
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <meta charset="utf-8" />
+  <title>Member表</title>
+</head>
+ 
+<body>
+  <h1>SRM項目一覧</h1>
+  <table border="1" style="border-collapse: collapse">
+    <thead>
+      <tr>
+        <th>番号</th>
+        <th>項目</th>
+      </tr>
+    </thead>
+    {% for item in object_list %}
+      <tbody style="text-align:center">
+        <tr><td>１</td><td>{{ item.SRM_name1 }}</td></tr>
+        <tr><td>２</td><td>{{ item.SRM_name2 }}</td></tr>
+        <tr><td>３</td><td>{{ item.SRM_name3 }}</td></tr>
+        <tr><td>４</td><td>{{  item.SRM_name4 }}</td></tr>
+        <tr><td>５</td><td>{{  item.SRM_name5 }}</td></tr>
+        <tr><td>６</td><td>{{  item.SRM_name6 }}</td></tr>
+        <tr><td>７</td><td>{{  item.SRM_name7 }}</td></tr>
+        <tr><td>８</td><td>{{  item.SRM_name8 }}</td></tr>
+        <tr><td>９</td><td>{{  item.SRM_name9 }}</td></tr>
+        <tr><td>10</td><td>{{  item.SRM_name10 }}</td></tr>
+      </tbody>
+      <td><a class="btn btn-primary" href="{% url 'SRM_opupdate' item.pk %}" role="button">編集</a></td>
+      <td><a class="btn btn-primary" href="{% url 'Options' %}" pk="button">戻る</a></td>          
+    {% endfor %}
+    </table>
+</body>
+        
+{% endblock content %}
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

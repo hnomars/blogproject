@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+    <div class='container'>
+        <div class="card">
+            <h5 class="card-header">設定一覧</h5>
+            <div class="card-body">
+                <table border="1" style="border-collapse: collapse">
+                    <tbody style="text-align:center">
+                        <div class="d-grid gap-2">
+                            <a class="btn btn-success" href="{% url 'SRM_oplist' %}" role="button">SRMの設定</a>
+                            <a class="btn btn-success" href="{% url 'St_oplist' %}" role="button">ストレス得点表の設定</a>
+                            <a class="btn btn-success" href="{% url 'Word_list' %}" role="button">自分への言葉の設定</a>
+                        </div>  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

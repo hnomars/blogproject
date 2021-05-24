@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+
+
+<form action="" method="POST">{% csrf_token %}
+
+<h5>SRM更新　{{ form.SRM_date }}</h5>
+
+    <table border="1" style="border-collapse: collapse">
+        <thead>
+            <tr class="table-info">
+                <th>時間</th>
+                <th>活動量</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if SRMOptionlist.0.SRM_name1 != "" %}
+            <tr>
+                <td>{{ SRMOptionlist.0.SRM_name1 }}：{{ form.action_time1 }}{{ form.action_time1.errors }}</td>
+                <td>　{{ form.action_value1 }}{{ form.action_value1.errors }}(0～3)</td>
+            </tr>
+        {% endif %}
+        {% if SRMOptionlist.0.SRM_name2 != "" %}
+            <tr>
+                <td>{{ SRMOptionlist.0.SRM_name2 }}：{{ form.action_time2 }}{{ form.action_time2.errors }}</td>
+                <td>　{{ form.action_value2 }}{{ form.action_value2.errors }}(0～3)</td>
+            </tr>
+        {% endif %}
+        {% if SRMOptionlist.0.SRM_name3 != "" %}
+            <tr>
+                <td>{{ SRMOptionlist.0.SRM_name3 }}：{{ form.action_time3 }}{{ form.action_time3.errors }}</td>
+                <td>　{{ form.action_value3 }}{{ form.action_value3.errors }}(0～3)</td>
+            </tr>
+        {% endif %}
+        {% if SRMOptionlist.0.SRM_name4 != "" %}
+            <tr>
+                <td>{{ SRMOptionlist.0.SRM_name4 }}：{{ form.action_time4 }}{{ form.action_time4.errors }}</td>
+                <td>　{{ form.action_value4 }}{{ form.action_value4.errors }}(0～3)</td>
+            </tr>
+        {% endif %}
+        {% if SRMOptionlist.0.SRM_name5 != "" %}
+            <tr>
+                <td>{{ SRMOptionlist.0.SRM_name5 }}：{{ form.action_time5 }}{{ form.action_time5.errors }}</td>
+                <td>　{{ form.action_value5 }}{{ form.action_value5.errors }}(0～3)</td>
+            </tr>
+        {% endif %}
+        {% if SRMOptionlist.0.SRM_name6 != "" %}
+            <tr>
+                <td>{{ SRMOptionlist.0.SRM_name6 }}：{{ form.action_time6 }}{{ form.action_time6.errors }}</td>
+                <td>　{{ form.action_value6 }}{{ form.action_value6.errors }}(0～3)</td>
+            </tr>
+        {% endif %}
+        {% if SRMOptionlist.0.SRM_name7 != "" %}
+            <tr>
+                <td>{{ SRMOptionlist.0.SRM_name7 }}：{{ form.action_time7 }}{{ form.action_time7.errors }}</td>
+                <td>　{{ form.action_value7 }}{{ form.action_value7.errors }}(0～3)</td>
+            </tr>
+        {% endif %}
+        {% if SRMOptionlist.0.SRM_name8 != "" %}
+            <tr>
+                <td>{{ SRMOptionlist.0.SRM_name8 }}：{{ form.action_time8 }}{{ form.action_time8.errors }}</td>
+                <td>　{{ form.action_value8 }}{{ form.action_value8.errors }}(0～3)</td>
+            </tr>
+        {% endif %}
+        {% if SRMOptionlist.0.SRM_name9 != "" %}
+            <tr>
+                <td>{{ SRMOptionlist.0.SRM_name9 }}：{{ form.action_time9 }}{{ form.action_time9.errors }}</td>
+                <td>　{{ form.action_value9 }}{{ form.action_value9.errors }}(0～3)</td>
+            </tr>
+        {% endif %}
+        {% if SRMOptionlist.0.SRM_name10 != "" %}
+            <tr>
+                <td>{{ SRMOptionlist.0.SRM_name10 }}：{{ form.action_time10 }}{{ form.action_time10.errors }}</td>
+                <td>　{{ form.action_value10 }}{{ form.action_value10.errors }}(0～3)</td>
+            </tr>
+        {% endif %}
+        <tr><td>躁鬱度：</td><td>　{{ form.mood_value }}{{ form.mood_value.errors }}(-5～5)</td></tr>        
+        <tr><td>出来事：{{ form.ivent }}{{ form.ivent.errors }}</td><td></td></tr>        
+        </tbody>
+        <input type="submit" value="更新する"> 
+    </table>
+    <a class="btn btn-primary" href="{% url 'Top' %}" role="button">キャンセル</a>
+
+</form>
+{% endblock content %}

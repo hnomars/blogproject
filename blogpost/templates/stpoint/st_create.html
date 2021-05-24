@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<form action="" method="POST">{% csrf_token %}
+    <h5>ストレス得点表　新規作成</h5>
+
+    <table border="1" style="border-collapse: collapse">
+        <thead>
+                <td>ストレスの種類</td>
+                <td>チェック</td>
+        </thead>
+
+    <tbody>
+    <tr>
+        <td>日時：{{ form.point_date }}</td>
+        <td></td>
+    </tr>
+    {% if stNames.0 != None %}
+      <tr>
+        <td>{{ stNames.0 }}</td>
+        <td>{{ form.point1 }}{{ form.point1.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.1 != None %}
+      <tr>
+        <td>{{ stNames.1 }}</td>
+        <td>{{ form.point2 }}{{ form.point2.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.2 != None %}
+      <tr>
+        <td>{{ stNames.2 }}</td>
+        <td>{{ form.point3 }}{{ form.point3.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.3 != None %}
+      <tr>
+        <td>{{ stNames.3 }}</td>
+        <td>{{ form.point4 }}{{ form.point4.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.4 != None %}
+      <tr>
+        <td>{{ stNames.4 }}</td>
+        <td>{{ form.point5 }}{{ form.point5.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.5 != None %}
+      <tr>
+        <td>{{ stNames.5 }}</td>
+        <td>{{ form.point6 }}{{ form.point6.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.6 != None %}
+      <tr>
+        <td>{{ stNames.6 }}</td>
+        <td>{{ form.point7 }}{{ form.point7.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.7 != None %}
+      <tr>
+        <td>{{ stNames.7 }}</td>
+        <td>{{ form.point8 }}{{ form.point8.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.8 != None %}
+      <tr>
+        <td>{{ stNames.8 }}</td>
+        <td>{{ form.point9 }}{{ form.point9.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.9 != None %}
+      <tr>
+        <td>{{ stNames.9 }}</td>
+        <td>{{ form.point10 }}{{ form.point10.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.10 != None %}
+      <tr>
+        <td>{{ stNames.10 }}</td>
+        <td>{{ form.point11 }}{{ form.point11.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.11 != None %}
+      <tr>
+        <td>{{ stNames.11 }}</td>
+        <td>{{ form.point12 }}{{ form.point12.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.12 != None %}
+      <tr>
+        <td>{{ stNames.12 }}</td>
+        <td>{{ form.point13 }}{{ form.point13.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.13 != None %}
+      <tr>
+        <td>{{ stNames.13 }}</td>
+        <td>{{ form.point14 }}{{ form.point14.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.14 != None %}
+      <tr>
+        <td>{{ stNames.14 }}</td>
+        <td>{{ form.point15 }}{{ form.point15.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.15 != None %}
+      <tr>
+        <td>{{ stNames.15 }}</td>
+        <td>{{ form.point16 }}{{ form.point16.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.16 != None %}
+      <tr>
+        <td>{{ stNames.16 }}</td>
+        <td>{{ form.point17 }}{{ form.point17.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.17 != None %}
+      <tr>
+        <td>{{ stNames.17 }}</td>
+        <td>{{ form.point18 }}{{ form.point18.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.18 != None %}
+      <tr>
+        <td>{{ stNames.18 }}</td>
+        <td>{{ form.point19 }}{{ form.point19.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.19 != None %}
+      <tr>
+        <td>{{ stNames.19 }}</td>
+        <td>{{ form.point20 }}{{ form.point20.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.20 != None %}
+      <tr>
+        <td>{{ stNames.20 }}</td>
+        <td>{{ form.point21 }}{{ form.point21.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.21 != None %}
+      <tr>
+        <td>{{ stNames.21 }}</td>
+        <td>{{ form.point22 }}{{ form.point22.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.22 != None %}
+      <tr>
+        <td>{{ stNames.22 }}</td>
+        <td>{{ form.point23 }}{{ form.point23.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.23 != None %}
+      <tr>
+        <td>{{ stNames.23 }}</td>
+        <td>{{ form.point24 }}{{ form.point24.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.24 != None %}
+      <tr>
+        <td>{{ stNames.24 }}</td>
+        <td>{{ form.point25 }}{{ form.point25.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.25 != None %}
+      <tr>
+        <td>{{ stNames.25 }}</td>
+        <td>{{ form.point26 }}{{ form.point26.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.26 != None %}
+      <tr>
+        <td>{{ stNames.26 }}</td>
+        <td>{{ form.point27 }}{{ form.point27.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.27 != None %}
+      <tr>
+        <td>{{ stNames.27 }}</td>
+        <td>{{ form.point28 }}{{ form.point28.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.28 != None %}
+      <tr>
+        <td>{{ stNames.28 }}</td>
+        <td>{{ form.point29 }}{{ form.point29.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.29 != None %}
+      <tr>
+        <td>{{ stNames.29 }}</td>
+        <td>{{ form.point30 }}{{ form.point30.errors }}</td>
+      </tr>
+    {% endif %}
+
+</tbody>
+</table>
+
+    <input type="submit" value="作成する">
+    <a class="btn btn-primary" href="{% url 'St_list' %}" role="button">キャンセル</a>
+
+</form>
+{% endblock content %}

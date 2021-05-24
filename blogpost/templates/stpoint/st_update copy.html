@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<form action="" method="POST">{% csrf_token %}
+<h5>ストレス得点表　編集</h5>
+
+<table border="1" style="border-collapse: collapse">
+<thead>
+        <td>ストレスの種類</td>
+        <td>チェック</td>
+</thead>
+
+<tbody>
+    <tr>
+        <td>日時：{{ form.point_date }}</td>
+        <td></td>
+    </tr>
+    {% if stNames.1 != None %}
+      <tr>
+        <td>{{ stNames.1 }}</td>
+        <td style="text-align:center">{{ form.point1 }}{{ form.point1.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.2 != None %}
+      <tr>
+        <td>{{ stNames.2 }}</td>
+        <td style="text-align:center">{{ form.point2 }}{{ form.point2.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.3 != None %}
+      <tr>
+        <td>{{ stNames.3 }}</td>
+        <td>{{ form.point3 }}{{ form.point3.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.4 != None %}
+      <tr>
+        <td>{{ stNames.4 }}</td>
+        <td>{{ form.point4 }}{{ form.point4.errors }}</td>
+      </tr>
+    {% endif %}
+    {% if stNames.5 != None %}
+      <tr>
+        <td>{{ stNames.5 }}</td>
+        <td>{{ form.point5 }}{{ form.point5.errors }}</td>
+      </tr>
+    {% endif %}
+
+</tbody>
+</table>
+
+    <input type="submit" value="編集する">
+    <a class="btn btn-primary" href="{% url 'St_list' %}" role="button">戻る</a>
+
+</form>
+{% endblock content %}

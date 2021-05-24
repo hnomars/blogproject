@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+    <div class='container'>
+        <div class="card">
+            <h5 class="card-header">{{ object.category }}</h5>
+            <div class="card-body">
+                <h5 class="card-title">{{ object.title }}</h5>
+                <p class="card-text">{{ object.content }}</p>
+                <a class="btn btn-primary" href="{% url 'list' %}" >一覧へ</a>
+                <a class="btn btn-primary" href="{% url 'update' object.pk %}" >編集する</a>
+                <a class="btn btn-primary" href="{% url 'delete' object.pk %}" >削除</a>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<form action="" method="POST">{% csrf_token %}
+    <table>
+        {{form.as_table}}
+        <input type="submit" value="作成する">
+    </table>
+</form>
+<a class="btn btn-primary" href="{% url 'St_oplist' %}" role="button">戻る</a>
+{% endblock content %}

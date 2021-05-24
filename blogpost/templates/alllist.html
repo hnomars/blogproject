@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <meta charset="utf-8" />
+    <title>Member表</title>
+</head>
+ 
+<body>
+    <h1>Memberモデル</h1>
+    <p>{{ message }}</p>
+    <table border="1" style="border-collapse: collapse">
+        <thead>
+            <tr>
+                <th>category</th>
+                <th>title</th>
+                <th>content</th>
+                <th>postdate</th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for item in object_list %}
+        <tbody>
+            <tr>
+                <td>{{ item.category }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.content }}</td>
+                <td>{{ item.postdate }}</td>
+                <td><a class="btn btn-primary" href="{% url 'detail' item.pk %}" role="button">編集</a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</body>
+ 
+</html>
+    
+    
+    
+    
+{% endblock content %}
