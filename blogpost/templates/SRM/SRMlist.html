@@ -20,6 +20,8 @@
   {% load random_tags %}
     <h1>SRMリスト </h1>
     <a class="btn btn-warning" href="{% url 'SRMcreate' %}" role="button">新規作成</a>
+    <a class="btn btn-warning" href="{% url 'glaph1' %}" role="button">グラフ</a>
+    
     <table class="table table-striped table-hover table-sm">
       <thead>
         <tr class="table-info">
@@ -124,6 +126,7 @@
     </table>
         <a class="btn btn-primary" href="{% url 'Top' %}" role="button">ホームへ</a>        
 <p>{% SRM_check %}</p>
+
 <nav aria-label="Page navigation example">
 
     <ul class="pagination justify-content-center pagination-lg g-mt-28 g-mb-28">

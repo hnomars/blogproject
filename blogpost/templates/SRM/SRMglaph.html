@@ -1,0 +1,13 @@
+<!doctype html>
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+
+<br>
+    <a class="btn btn-warning" href="{% url 'SRMlist' %}" role="button">戻る</a>
+</br>
+<img src="{% url 'diary:plot' %}" width=600 height=600>
+{% endblock content %}

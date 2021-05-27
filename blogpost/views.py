@@ -17,7 +17,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 
-
+import matplotlib
+#バックエンドを指定
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import io
+from django.http import HttpResponse
 
 # 以下追加モジュール
 
@@ -325,4 +330,54 @@ def csvExport(request):
         "気分", "出来事")
     # for post in SRMModel.objects.all():
     #     writer.writerow([post.pk, post.name])
+    return response
+
+#グラフ作成
+
+class SRMglaph(TemplateView):
+    template_name = 'SRM/SRMcreate.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
+        context['stcategolys'] = list(StPointModel.objects.all())
+        context['stNames'] = list(StPointNameModel.objects.all())
+        return context
+
+def setPlt():
+    x_dt = SRMModel.objects.all().values_list('SRM_date').order_by('-SRM_date')[:14]
+
+    print("test")
+    print(x_dt)
+    x =[]
+    for i in range(len(x_dt)):
+        x.append(x_dt[i][0].strftime('%m/%d'))
+    
+    y_val = SRMModel.objects.all().values_list('action_value1',"action_value2","action_value3","action_value4","action_value5","action_value6","action_value7","action_value8","action_value9","action_value10").order_by('-SRM_date')[:14]
+    y = [i for i in y_val]
+
+    print(y)
+    y_sum =[]
+    for i in range(len(y)):
+        y_sum.append(sum([0 if j is None else j for j in y[i]])) 
+    print(y_sum)
+
+    plt.bar(x, y_sum, color='#00d5ff')
+    plt.title(r"$\bf{activelevel 14days nearly}$", color='#3407ba')
+    plt.xlabel("date")
+    plt.ylabel("activelevel")
+
+# SVG化
+def plt2svg():
+    buf = io.BytesIO()
+    plt.savefig(buf, format='svg', bbox_inches='tight')
+    s = buf.getvalue()
+    buf.close()
+    return s
+
+# 実行するビュー関数
+def get_svg(request):
+    setPlt()  
+    svg = plt2svg()  #SVG化
+    plt.cla()  # グラフをリセット
+    response = HttpResponse(svg, content_type='image/svg+xml')
     return response
