@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogpost.apps.BlogpostConfig',
-    'blogpost.templatetags'
-    # 'import_export',
+    'blogpost.templatetags',
+    'import_export'
     # 'blogpost.templatetags.options'
 ]
 
