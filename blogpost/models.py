@@ -53,7 +53,7 @@ class SRMModel(models.Model):
 
     # id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     SRM_date = models.DateField(unique=True, primary_key=True, default=timezone.now, help_text="日付")  #db_index=True
- 
+
     action_time1 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
     action_value1 = models.IntegerField(choices=value_range1, default=None, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
@@ -122,6 +122,7 @@ CONDITION = [
     ("8",'疲れ'),
     ("9",'怒り'),
     ("10",'我慢'),
+    ("11",'会話不足'),
     ]
 
 class StPointNameModel(models.Model):
@@ -138,37 +139,33 @@ class StPointNameModel(models.Model):
     
 class StPointModel(models.Model):
     point_date = models.DateField(default=timezone.now, primary_key=True, help_text="日付") #unique_for_date=True
-    point1 = models.BooleanField(default='Flase')
-    point2 = models.BooleanField(default='Flase')
-    point3 = models.BooleanField(default='Flase')
-    point4 = models.BooleanField(default='Flase')
-    point5 = models.BooleanField(default='Flase')
-    point6 = models.BooleanField(default='Flase')
-    point7 = models.BooleanField(default='Flase')
-    point8 = models.BooleanField(default='Flase')
-    point9 = models.BooleanField(default='Flase')
-    point10 = models.BooleanField(default='Flase')
-    point11 = models.BooleanField(default='Flase')
-    point12 = models.BooleanField(default='Flase')
-    point13 = models.BooleanField(default='Flase')
-    point14 = models.BooleanField(default='Flase')
-    point15 = models.BooleanField(default='Flase')
-    point16 = models.BooleanField(default='Flase')
-    point17 = models.BooleanField(default='Flase')
-    point18 = models.BooleanField(default='Flase')
-    point19 = models.BooleanField(default='Flase')
-    point20 = models.BooleanField(default='Flase')
-    point21 = models.BooleanField(default='Flase')
-    point22 = models.BooleanField(default='Flase')
-    point23 = models.BooleanField(default='Flase')
-    point24 = models.BooleanField(default='Flase')
-    point25 = models.BooleanField(default='Flase')
-    point26 = models.BooleanField(default='Flase')
-    point27 = models.BooleanField(default='Flase')
-    point28 = models.BooleanField(default='Flase')
-    point29 = models.BooleanField(default='Flase')
-    point30 = models.BooleanField(default='Flase')
-
-    def __str__(self):
-        self.title = str(self.point_date)
-        return self.title
+    point1 = models.BooleanField(default=False)
+    point2 = models.BooleanField(default=False)
+    point3 = models.BooleanField(default=False)
+    point4 = models.BooleanField(default=False)
+    point5 = models.BooleanField(default=False)
+    point6 = models.BooleanField(default=False)
+    point7 = models.BooleanField(default=False)
+    point8 = models.BooleanField(default=False)
+    point9 = models.BooleanField(default=False)
+    point10 = models.BooleanField(default=False)
+    point11 = models.BooleanField(default=False)
+    point12 = models.BooleanField(default=False)
+    point13 = models.BooleanField(default=False)
+    point14 = models.BooleanField(default=False)
+    point15 = models.BooleanField(default=False)
+    point16 = models.BooleanField(default=False)
+    point17 = models.BooleanField(default=False)
+    point18 = models.BooleanField(default=False)
+    point19 = models.BooleanField(default=False)
+    point20 = models.BooleanField(default=False)
+    point21 = models.BooleanField(default=False)
+    point22 = models.BooleanField(default=False)
+    point23 = models.BooleanField(default=False)
+    point24 = models.BooleanField(default=False)
+    point25 = models.BooleanField(default=False)
+    point26 = models.BooleanField(default=False)
+    point27 = models.BooleanField(default=False)
+    point28 = models.BooleanField(default=False)
+    point29 = models.BooleanField(default=False)
+    point30 = models.BooleanField(default=False)

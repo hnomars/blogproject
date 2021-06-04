@@ -22,7 +22,7 @@
   <a class="btn btn-warning" href="{% url 'St_create' %}" role="button">新規作成</a>
   <table border="1" style="border-collapse: collapse">
 
-  <tbody>
+  <tbody style="text-align:center">
     <tr>
       <td style="text-align:center">項目＼日付</td>
       {% for item in object_list %}
@@ -31,47 +31,254 @@
       {% endfor %}
     </tr>
 
-
     {% if stNames.0 != None %}
       <tr>
-        <td style="text-align:center">{{ stNames.0 }}</td>
+        <td>{{ stNames.0 }}</td>
         {% for item in object_list %}
           <td style="text-align:center">{% tfcheck item.point1 %}</td>
         {% endfor %}
       </tr>
     {% endif %}
-    {% if stNames.1 != None %}
-      <tr>
-        <td>{{ stNames.1 }}</td>
-        {% for item in object_list %}
-          <td style="text-align:center">{% tfcheck item.point2 %}</td>
-        {% endfor %}
-      </tr>
-    {% endif %}
-    {% if stNames.2 != None %}
-      <tr>
-        <td>{{ stNames.2 }}</td>
-        {% for item in object_list %}
-          <td>{% tfcheck item.point3 %}</td>
-        {% endfor %}
-      </tr>
-    {% endif %}
-    {% if stNames.3 != None %}
-      <tr>
-        <td>{{ stNames.3 }}</td>
-        {% for item in object_list %}
-          <td>{% tfcheck item.point4 %}</td>
-        {% endfor %}
-      </tr>
-    {% endif %}
-    {% if stNames.4 != None %}
-      <tr>
-        <td>{{ stNames.4 }}</td>
-        {% for item in object_list %}
-          <td>{% tfcheck item.point5 %}</td>
-        {% endfor %}
-      </tr>
-    {% endif %}
+    {% if stNames.1 != None %}
+      <tr>
+        <td>{{ stNames.1 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point2 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.2 != None %}
+      <tr>
+        <td>{{ stNames.2 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point3 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.3 != None %}
+      <tr>
+        <td>{{ stNames.3 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point4 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.4 != None %}
+      <tr>
+        <td>{{ stNames.4 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point5 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.4 != None %}
+      <tr>
+        <td>{{ stNames.4 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point5 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.5 != None %}
+      <tr>
+        <td>{{ stNames.5 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point6 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.6 != None %}
+      <tr>
+        <td>{{ stNames.6 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point7 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.7 != None %}
+      <tr>
+        <td>{{ stNames.7 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point8 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.8 != None %}
+      <tr>
+        <td>{{ stNames.8 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point9 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.9 != None %}
+      <tr>
+        <td>{{ stNames.9 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point10 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.10 != None %}
+      <tr>
+        <td>{{ stNames.10 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point11 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.11 != None %}
+      <tr>
+        <td>{{ stNames.11 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point12 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.12 != None %}
+      <tr>
+        <td>{{ stNames.12 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point13 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.13 != None %}
+      <tr>
+        <td>{{ stNames.13 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point14 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.14 != None %}
+      <tr>
+        <td>{{ stNames.14 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point15 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.15 != None %}
+      <tr>
+        <td>{{ stNames.15 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point16 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.16 != None %}
+      <tr>
+        <td>{{ stNames.16 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point17 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.17 != None %}
+      <tr>
+        <td>{{ stNames.17 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point18 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.18 != None %}
+      <tr>
+        <td>{{ stNames.18 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point19 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.19 != None %}
+      <tr>
+        <td>{{ stNames.19 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point20 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.20 != None %}
+      <tr>
+        <td>{{ stNames.20 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point21 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.21 != None %}
+      <tr>
+        <td>{{ stNames.21 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point22 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.22 != None %}
+      <tr>
+        <td>{{ stNames.22 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point23 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.23 != None %}
+      <tr>
+        <td>{{ stNames.23 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point24 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.24 != None %}
+      <tr>
+        <td>{{ stNames.24 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point25 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.25 != None %}
+      <tr>
+        <td>{{ stNames.25 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point26 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.26 != None %}
+      <tr>
+        <td>{{ stNames.26 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point27 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.27 != None %}
+      <tr>
+        <td>{{ stNames.27 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point28 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.28 != None %}
+      <tr>
+        <td>{{ stNames.28 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point29 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
+    {% if stNames.29 != None %}
+      <tr>
+        <td>{{ stNames.29 }}</td>
+        {% for item in object_list %}
+          <td>{% tfcheck item.point30 %}</td>
+        {% endfor %}
+      </tr>
+    {% endif %}
 
   </tbody>
 
