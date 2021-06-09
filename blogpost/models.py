@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.fields import AutoField
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
+from datetime import time
 
 # Create your models here.
 class SampleModel(models.Model):
@@ -27,14 +28,14 @@ class SRMOptionModel(models.Model):
     title = "SRM_option"
     SRM_name1 = "就寝"
     SRM_name2 = "起床"
-    SRM_name3 = models.CharField(default = "接触", max_length=20, blank=True)
-    SRM_name4 = models.CharField(default = "集団", max_length=20, blank=True)
-    SRM_name5 = models.CharField(default = "夕食", max_length=20, blank=True)
-    SRM_name6 = models.CharField(max_length=20,blank=True)
-    SRM_name7 = models.CharField(max_length=20,blank=True)
-    SRM_name8 = models.CharField(max_length=20,blank=True)
-    SRM_name9 = models.CharField(max_length=20,blank=True)
-    SRM_name10 = models.CharField(max_length=20,blank=True)
+    SRM_name3 = models.CharField(default = "接触", max_length=20, blank=True, null=True)
+    SRM_name4 = models.CharField(default = "集団", max_length=20, blank=True, null=True)
+    SRM_name5 = models.CharField(default = "夕食", max_length=20, blank=True, null=True)
+    SRM_name6 = models.CharField(max_length=20,blank=True, null=True)
+    SRM_name7 = models.CharField(max_length=20,blank=True, null=True)
+    SRM_name8 = models.CharField(max_length=20,blank=True, null=True)
+    SRM_name9 = models.CharField(max_length=20,blank=True, null=True)
+    SRM_name10 = models.CharField(max_length=20,blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -42,7 +43,7 @@ class SRMOptionModel(models.Model):
 class SRMModel(models.Model):
     actions = ["昨就寝","起床","接触","集団","夕食","#6","#7","#8","#9","#10"]
     action_times = ["action" + str(i) +"_time" for i in range(len(actions))]  
-    default_times = ["21:00:00","04:30:00","06:30:00","09:00:00","18:30:00","12:00:00","12:00:00","12:00:00","12:00:00","12:00:00"]
+    default_times = [time(21,00,00,0),time(4,30,00,0),time(6,30,00,0),time(9,00,00,0),time(18,30,00,0),time(12,00,00,0),time(12,00,00,0),time(12,00,00,0),time(12,00,00,0),time(12,00,00,0)]
     action_values = ["action" + str(i) +"_value" for i in range(len(actions))]  
     #活動量の数値の範囲
     value_range1 =  ((0,0),(1,1),(2,2),(3,3))
@@ -52,37 +53,37 @@ class SRMModel(models.Model):
     i = 0
 
     # id = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
-    SRM_date = models.DateField(unique=True, primary_key=True, default=timezone.now, help_text="日付")  #db_index=True
+    SRM_date = models.DateField(primary_key=True, default=timezone.localtime, help_text="日付")  #db_index=True
 
     action_time1 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value1 = models.IntegerField(choices=value_range1, default=None, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value1 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time2 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value2 = models.IntegerField(choices=value_range1, default=None, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value2 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time3 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value3 = models.IntegerField(choices=value_range1, default=None, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value3 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time4 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value4 = models.IntegerField(choices=value_range1, default=None, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value4 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time5 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value5 = models.IntegerField(choices=value_range1, default=None, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value5 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time6 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value6 = models.IntegerField(choices=value_range1, default=None, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value6 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time7 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value7 = models.IntegerField(choices=value_range1, default=None, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value7 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time8 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value8 = models.IntegerField(choices=value_range1, default=None, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value8 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time9 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value9 = models.IntegerField(choices=value_range1, default=None, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value9 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time10 = models.TimeField(default=default_times[i] , blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value10 = models.IntegerField(choices=value_range1, default=None, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value10 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
 
     mood_value = models.IntegerField(choices=value_range2, default=None, blank=True, null=True, help_text="気分の値 -5～5")
     ivent = models.CharField(max_length=50, blank=True, null=True)

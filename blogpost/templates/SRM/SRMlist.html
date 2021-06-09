@@ -26,43 +26,43 @@
       <thead>
         <tr class="table-info">
           <th style="text-align:center">日付</th>
-          {% if SRMoptions.0.SRM_name1 != "" %}
+          {% if SRMoptions.0.SRM_name1 != None %}
             <th style="text-align:center">{{ SRMoptions.0.SRM_name1 }}</th>
             <th style="text-align:center">0~3</th>
           {% endif %}
-          {% if SRMoptions.0.SRM_name2 != "" %}
+          {% if SRMoptions.0.SRM_name2 != None %}
             <th style="text-align:center">{{ SRMoptions.0.SRM_name2 }}</th>
             <th style="text-align:center">0~3</th>
           {% endif %}            
-          {% if SRMoptions.0.SRM_name3 != "" %}
+          {% if SRMoptions.0.SRM_name3 != None %}
             <th style="text-align:center">{{ SRMoptions.0.SRM_name3 }}</th>
             <th style="text-align:center">0~3</th>
           {% endif %}
-          {% if SRMoptions.0.SRM_name4 != "" %}
+          {% if SRMoptions.0.SRM_name4 != None %}
             <th style="text-align:center">{{ SRMoptions.0.SRM_name4 }}</th>
             <th style="text-align:center">0~3</th>
           {% endif %}
-          {% if SRMoptions.0.SRM_name5 != "" %}
+          {% if SRMoptions.0.SRM_name5 != None %}
             <th style="text-align:center">{{ SRMoptions.0.SRM_name5 }}</th>
             <th style="text-align:center">0~3</th>
           {% endif %}
-          {% if SRMoptions.0.SRM_name6 != "" %}
+          {% if SRMoptions.0.SRM_name6 != None %}
             <th style="text-align:center">{{ SRMoptions.0.SRM_name6 }}</th>
             <th style="text-align:center">0~3</th>
           {% endif %}  
-          {% if SRMoptions.0.SRM_name7 != "" %}
+          {% if SRMoptions.0.SRM_name7 != None %}
             <th style="text-align:center">{{ SRMoptions.0.SRM_name7 }}</th>
             <th style="text-align:center">0~3</th>
           {% endif %}
-          {% if SRMoptions.0.SRM_name8 != "" %}
+          {% if SRMoptions.0.SRM_name8 != None %}
             <th style="text-align:center">{{ SRMoptions.0.SRM_name8 }}</th>
             <th style="text-align:center">0~3</th>
           {% endif %}
-          {% if SRMoptions.0.SRM_name9 != "" %}
+          {% if SRMoptions.0.SRM_name9 != None %}
             <th style="text-align:center">{{ SRMoptions.0.SRM_name9 }}</th>
             <th style="text-align:center">0~3</th>
           {% endif %}
-          {% if SRMoptions.0.SRM_name10 != "" %}
+          {% if SRMoptions.0.SRM_name10 != None %}
             <th style="text-align:center">{{ SRMoptions.0.SRM_name10 }}</th>
             <th style="text-align:center">0~3</th>
           {% endif %}                    
@@ -76,43 +76,43 @@
       
         <tr style="text-align:center">
           <td>{{ item.SRM_date|date:"n/j" }}</td>
-          {% if SRMoptions.0.SRM_name1 != "" %}
+          {% if SRMoptions.0.SRM_name1 != None %}
           <td>{{ item.action_time1|date:"H:i" }}</td>
           <td>{% nullblank item.action_value1 %}</td>
           {% endif %}
-          {% if SRMoptions.0.SRM_name2 != "" %}
+          {% if SRMoptions.0.SRM_name2 != None %}
           <td>{{ item.action_time2|date:"H:i" }}</td>
           <td>{% nullblank item.action_value2 %}</td>
           {% endif %}                    
-          {% if SRMoptions.0.SRM_name3 != "" %}
+          {% if SRMoptions.0.SRM_name3 != None %}
           <td>{{ item.action_time3|date:"H:i" }}</td>
           <td>{% nullblank item.action_value3 %}</td>
           {% endif %}                    
-          {% if SRMoptions.0.SRM_name4 != "" %}
+          {% if SRMoptions.0.SRM_name4 != None %}
           <td>{{ item.action_time4|date:"H:i" }}</td>
           <td>{% nullblank item.action_value4 %}</td>
           {% endif %}                    
-          {% if SRMoptions.0.SRM_name5 != "" %}
+          {% if SRMoptions.0.SRM_name5 != None %}
           <td>{{ item.action_time5|date:"H:i" }}</td>
           <td>{% nullblank item.action_value5 %}</td>
           {% endif %}                    
-          {% if SRMoptions.0.SRM_name6 != "" %}
+          {% if SRMoptions.0.SRM_name6 != None %}
           <td>{{ item.action_time6|date:"H:i" }}</td>
           <td>{% nullblank item.action_value6 %}</td>
           {% endif %}                    
-          {% if SRMoptions.0.SRM_name7 != "" %}
+          {% if SRMoptions.0.SRM_name7 != None %}
           <td>{{ item.action_time7|date:"H:i" }}</td>
           <td>{% nullblank item.action_value7 %}</td>
           {% endif %}                    
-          {% if SRMoptions.0.SRM_name8 != "" %}
+          {% if SRMoptions.0.SRM_name8 != None %}
           <td>{{ item.action_time8|date:"H:i" }}</td>
           <td>{% nullblank item.action_value8 %}</td>
           {% endif %}                    
-          {% if SRMoptions.0.SRM_name9 != "" %}
+          {% if SRMoptions.0.SRM_name9 != None %}
           <td>{{ item.action_time9|date:"H:i" }}</td>
           <td>{% nullblank item.action_value9 %}</td>
           {% endif %}                    
-          {% if SRMoptions.0.SRM_name10 != "" %}
+          {% if SRMoptions.0.SRM_name10 != None %}
           <td>{{ item.action_time10|date:"H:i" }}</td>
           <td>{% nullblank item.action_value10 %}</td>
           {% endif %} 

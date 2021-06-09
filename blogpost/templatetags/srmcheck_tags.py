@@ -16,28 +16,28 @@ def SRM_check():
         check.append(str(i.SRM_date)[5:])
     for i in SRMModel.objects.all().filter(action_value2=None)[:n]:
         check.append(str(i.SRM_date)[5:])
-    if ops.SRM_name3  != "":
+    if ops.SRM_name3  != None:
         for i in SRMModel.objects.all().filter(action_value3=None)[:n]:
             check.append(str(i.SRM_date)[5:])
-    if ops.SRM_name4  != "":
+    if ops.SRM_name4  != None:
         for i in SRMModel.objects.all().filter(action_value4=None)[:n]:
             check.append(str(i.SRM_date)[5:])
-    if ops.SRM_name5  != "":
+    if ops.SRM_name5  != None:
         for i in SRMModel.objects.all().filter(action_value5=None)[:n]:
             check.append(str(i.SRM_date)[5:])
-    if ops.SRM_name6  != "":
+    if ops.SRM_name6  != None:
         for i in SRMModel.objects.all().filter(action_value6=None)[:n]:
             check.append(str(i.SRM_date)[5:])
-    if ops.SRM_name7  != "":
+    if ops.SRM_name7  != None:
         for i in SRMModel.objects.all().filter(action_value7=None)[:n]:
             check.append(str(i.SRM_date)[5:])
-    if ops.SRM_name8  != "":
+    if ops.SRM_name8  != None:
         for i in SRMModel.objects.all().filter(action_value8=None)[:n]:
             check.append(str(i.SRM_date)[5:])
-    if ops.SRM_name9  != "":
+    if ops.SRM_name9  != None:
         for i in SRMModel.objects.all().filter(action_value9=None)[:n]:
             check.append(str(i.SRM_date)[5:])
-    if ops.SRM_name10  != "":
+    if ops.SRM_name10  != None:
         for i in SRMModel.objects.all().filter(action_value10=None)[:n]:
             check.append(str(i.SRM_date)[5:])
     for i in SRMModel.objects.all().filter(mood_value=None)[:n]:
