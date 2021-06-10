@@ -3,6 +3,7 @@ from django.db.models.fields import AutoField
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import time
+from datetimewidget.widgets import DateTimeWidget
 
 # Create your models here.
 class SampleModel(models.Model):
