@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'blogpost.apps.BlogpostConfig',
     'blogpost.templatetags',
     'import_export',
-    # 'datetimewidget',
+
     # 'blogpost.templatetags.options'
 ]
 
