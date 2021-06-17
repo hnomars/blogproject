@@ -3,7 +3,6 @@ from django.db.models.fields import AutoField
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import time
-from datetimewidget.widgets import DateTimeWidget
 
 # Create your models here.
 class SampleModel(models.Model):
@@ -171,3 +170,18 @@ class StPointModel(models.Model):
     point28 = models.BooleanField(default=False)
     point29 = models.BooleanField(default=False)
     point30 = models.BooleanField(default=False)
+
+class MonitorModel(models.Model):
+    datetime = models.DateTimeField(default=timezone.now, primary_key=True, help_text="日付") #unique_for_date=True
+    event = models.CharField(max_length=100 ,help_text="きっかけ")
+    think = models.CharField(max_length=100 ,help_text="考え")
+    action = models.CharField(max_length=100 ,help_text="行動")
+    emotion = models.CharField(max_length=200 ,help_text="気持ち")
+    body = models.CharField(max_length=100 ,help_text="身体感覚")
+    stress = models.CharField(
+        max_length= 50,
+        choices = CONDITION
+    )
+    strespoint =  models.CharField(max_length=100 ,help_text="行動")
+    def __str__(self):
+        return self.title

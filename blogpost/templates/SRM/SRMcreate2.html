@@ -1,0 +1,24 @@
+<!doctype html>
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<h5>SRM新規</h5>
+<div class='container'>
+    <form action="" method="POST">{% csrf_token %}
+        <table class="table table-striped table-hover table-sm">
+            <tr class="table-info">
+                <th>項目</th>
+                <th>入力</th>
+            {{ form.as_table }}
+            
+        </table>
+        <input type="submit" value="作成する">
+    </form>
+    
+    <a class="btn btn-primary" href="{% url 'Top' %}" role="button">キャンセル</a>
+
+</div>
+{% endblock content %}

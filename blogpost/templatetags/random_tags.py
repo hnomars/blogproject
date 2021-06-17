@@ -9,7 +9,7 @@ def randomtag(value1,value2):
     words = WordModel.objects.values_list("word", flat=True)
 
     i = random.randint(0,len(words)-1)
-    return  words[i] +str(i)
+    return  words[i]
 
 @register.simple_tag
 def tfcheck(value1):

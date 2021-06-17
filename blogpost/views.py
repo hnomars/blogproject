@@ -1,8 +1,8 @@
 from django.shortcuts import render ,redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, TemplateView, UpdateView, TemplateView, FormView
-from .models import BlogModel, SRMModel, SRMOptionModel, WordModel, StPointModel ,StPointNameModel
-from .forms import SRMForm
+from .models import BlogModel, SRMModel, SRMOptionModel, WordModel, StPointModel ,StPointNameModel, MonitorModel
+from .forms import SRMForm, St_Form
 import os
 import openpyxl
 from django.http import HttpResponse
@@ -88,9 +88,9 @@ class SRMDetail(DetailView):
 class SRMUpdate(UpdateView):
     template_name = 'SRM/SRMupdate.html'
     model = SRMModel
-    fields = "__all__"
+    form_class = SRMForm
 
-    success_url = reverse_lazy('Top')
+    success_url = reverse_lazy('SRMlist')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
@@ -101,12 +101,18 @@ class SRMUpdate(UpdateView):
 class SRMCreate(CreateView):
     template_name = 'SRM/SRMcreate.html'
     model = SRMModel
-    fields = "__all__"
+    form_class = SRMForm
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['SRMOptionlist'] = SRMOptionModel.objects.all()        
         return context
+    success_url = reverse_lazy('Top')
+
+class SRMCreate2(CreateView):
+    template_name = 'SRM/SRMcreate2.html'
+    model = SRMModel
+    form_class = SRMForm
     success_url = reverse_lazy('Top')
 
 class SRM_opupdate(UpdateView):
@@ -193,7 +199,7 @@ class St_List(ListView):
 class St_Create(CreateView):
     template_name = 'stpoint/st_create.html'
     model = StPointModel
-    fields = "__all__"
+    form_class = St_Form
     success_url = reverse_lazy('St_list')
 
     def get_context_data(self, **kwargs):
@@ -205,7 +211,7 @@ class St_Create(CreateView):
 class St_Update(UpdateView):
     template_name = 'stpoint/st_update.html'
     model = StPointModel
-    fields = "__all__"
+    form_class = St_Form
 
     success_url = reverse_lazy('Top')
 
@@ -267,6 +273,33 @@ class Word_Update(UpdateView):
     fields = "__all__"
 
     success_url = reverse_lazy('Word_list')
+
+class Moni_Create(CreateView):
+    template_name = 'monitoring/create.html'
+    model = MonitorModel
+    fields = "__all__"
+
+    success_url = reverse_lazy('Top')
+
+class Moni_Update(UpdateView):
+    template_name = 'monitoring/update.html'
+    model = MonitorModel
+    fields = "__all__"
+
+    success_url = reverse_lazy('Moni_List')
+
+class Moni_List(ListView):
+    template_name = 'monitoring/list.html'
+    model = MonitorModel
+
+class Moni_Detile(DetailView):
+    template_name = 'monitoring/detail.html'
+    model = MonitorModel
+
+class Moni_Delete(DeleteView):
+    template_name = 'monitoring/delete.html'
+    model = MonitorModel
+    success_url = reverse_lazy('Moni_List')
 
 """ def alllist(request):
     data = BlogModel.objects.all()
