@@ -171,6 +171,10 @@ class StPointModel(models.Model):
     point29 = models.BooleanField(default=False)
     point30 = models.BooleanField(default=False)
 
+    def __str__(self):
+        self.title = str(self.point_date)
+        return self.title
+
 class MonitorModel(models.Model):
     datetime = models.DateTimeField(default=timezone.now, primary_key=True, help_text="日付") #unique_for_date=True
     event = models.CharField(max_length=100 ,help_text="きっかけ")

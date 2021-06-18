@@ -145,6 +145,10 @@ class Top(TemplateView):
         context['srmtest'] = list(SRMModel.objects.all())
         srmmodellist = list(SRMModel.objects.all())        
         context['SRMmodels'] = [str(i) for i in srmmodellist]
+        st_modellist = list(StPointModel.objects.all())       
+        context['St_models'] = [str(i) for i in st_modellist]
+        print(context['SRMmodels'])
+        print(context['St_models'])
         context['SRMname'] = 'SRMoptions.0.SRM_name1','SRMoptions.0.SRM_name2','SRMoptions.0.SRM_name3','SRMoptions.0.SRM_name4','SRMoptions.0.SRM_name5','SRMoptions.0.SRM_name6','SRMoptions.0.SRM_name7','SRMoptions.0.SRM_name8','SRMoptions.0.SRM_name9','SRMoptions.0.SRM_name10'
         context['word'] = list(WordModel.objects.all().values_list('word', flat=True))
         

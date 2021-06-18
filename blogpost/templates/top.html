@@ -25,25 +25,26 @@
             <body>
                 <p>
                 <div class="d-grid gap-2">
-                    <h5>SRM 残り　エクセル　合計点　matplotlib 会員　デプロイ</h5>
+                    <h5>SRM 残り 合計点　matplotlib 会員</h5>
                     <a>{% SRM_check %}</a>
                     {% if todaystr in SRMmodels %}
-                        <a class="btn btn-warning" href="{% url 'SRMupdate' todaystr %}" role="button">今日のSRM(修正)</a>
+                        <a class="btn btn-success" href="{% url 'SRMupdate' todaystr %}" role="button">今日のSRM(修正)</a>
                     {% else %}
                         <a class="btn btn-warning" href="{% url 'SRMcreate' %}" role="button">今日のSRM(新規)</a>
                     {% endif %}
                 <h5></h5>
 
-                <h5>今日のストレス得点表が未入力です</h5>
+                
                 {% if todaystr in St_models %}
-                    <a class="btn btn-warning" href="{% url 'St_update' todaystr %}" role="button">今日の得点表(修正)</a>
+                    <a class="btn btn-success" href="{% url 'St_update' todaystr %}" role="button">今日の得点表(修正)</a>
                 {% else %}
+                    <h5>今日のストレス得点表が未入力です</h5>
                     <a class="btn btn-warning" href="{% url 'St_create' %}" role="button">今日の得点表(新規)</a>
                 {% endif %}
                 <h5></h5>
 
-                <h5>ﾓﾆﾀﾘﾝｸﾞです</h5>
-                <a class="btn btn-warning" href="{% url 'Moni_Create' %}" role="button">モニタリングの作成</a>
+                
+                <h5>モニタリング<a class="btn btn-info" href="{% url 'Moni_Create' %}" role="button">モニタリングの作成</a></h5>
 
                 </div>    
                 </p>

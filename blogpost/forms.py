@@ -32,6 +32,6 @@ class St_Form(forms.ModelForm):
         model = StPointModel
         fields = '__all__'
         widgets = {
-            'point_date': forms.DateTimeInput(attrs={"type":"datetime-local"})
+            'point_date': forms.DateInput(attrs={"type":"date"})
         }
     
