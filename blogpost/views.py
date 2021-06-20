@@ -2,7 +2,7 @@ from django.shortcuts import render ,redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, TemplateView, UpdateView, TemplateView, FormView
 from .models import BlogModel, SRMModel, SRMOptionModel, WordModel, StPointModel ,StPointNameModel, MonitorModel
-from .forms import SRMForm, St_Form
+from .forms import SRMForm, St_Form, Moni_Form
 import os
 import openpyxl
 from django.http import HttpResponse
@@ -107,6 +107,7 @@ class SRMCreate(CreateView):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['SRMOptionlist'] = SRMOptionModel.objects.all()        
         return context
+
     success_url = reverse_lazy('Top')
 
 class SRMCreate2(CreateView):
@@ -280,21 +281,26 @@ class Word_Update(UpdateView):
 
 class Moni_Create(CreateView):
     template_name = 'monitoring/create.html'
+    form_class = Moni_Form
     model = MonitorModel
-    fields = "__all__"
 
     success_url = reverse_lazy('Top')
 
 class Moni_Update(UpdateView):
     template_name = 'monitoring/update.html'
+    form_class = Moni_Form
     model = MonitorModel
-    fields = "__all__"
+
 
     success_url = reverse_lazy('Moni_List')
 
 class Moni_List(ListView):
     template_name = 'monitoring/list.html'
     model = MonitorModel
+
+    def get_queryset(self):
+        date = MonitorModel.objects.order_by('-date', '-time')
+        return date    
 
 class Moni_Detile(DetailView):
     template_name = 'monitoring/detail.html'

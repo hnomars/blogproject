@@ -31,7 +31,8 @@
   <table border="1" style="border-collapse: collapse">
     <thead>
       <tr>
-        <th>日時</th>
+        <th>日付</th>
+        <th>時刻</th>
         <th>出来事</th>
         <th>考え</th>
         <th>行動</th>
@@ -45,7 +46,8 @@
     {% for item in object_list %}
     <tbody>
       <tr>
-        <td>{{ item.datetime }}</td>
+        <td>{{ item.date|date:"n/j" }}</td>
+        <td>{{ item.time|date:"H:i" }}</td>
         <td>{{ item.event }}</td>
         <td>{{ item.think }}</td>
         <td>{{ item.action }}</td>

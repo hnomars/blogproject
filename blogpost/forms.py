@@ -1,5 +1,5 @@
 from django import forms
-from .models import SRMModel, StPointModel
+from .models import SRMModel, StPointModel, MonitorModel
 from django.utils import timezone
 
 #活動量の数値の範囲
@@ -33,5 +33,14 @@ class St_Form(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'point_date': forms.DateInput(attrs={"type":"date"})
+        }
+
+class Moni_Form(forms.ModelForm):
+    class Meta:
+        model = MonitorModel
+        fields = '__all__'
+        widgets = {
+            'date': forms.DateInput(attrs={"type":"date"}),
+            'time': forms.TimeInput(attrs={"type":"time"})
         }
     

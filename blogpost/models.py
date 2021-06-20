@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models.fields import AutoField
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import time
@@ -176,16 +175,15 @@ class StPointModel(models.Model):
         return self.title
 
 class MonitorModel(models.Model):
-    datetime = models.DateTimeField(default=timezone.now, primary_key=True, help_text="日付") #unique_for_date=True
-    event = models.CharField(max_length=100 ,help_text="きっかけ")
-    think = models.CharField(max_length=100 ,help_text="考え")
-    action = models.CharField(max_length=100 ,help_text="行動")
-    emotion = models.CharField(max_length=200 ,help_text="気持ち")
-    body = models.CharField(max_length=100 ,help_text="身体感覚")
+    date = models.DateField(default=timezone.now, help_text="日付") #unique_for_date=True
+    time = models.TimeField(default=timezone.now, blank=True, null=True, help_text="時間") #unique_for_date=True
+    event = models.CharField(max_length=100, blank=True, help_text="きっかけ")
+    think = models.CharField(max_length=100, blank=True, help_text="考え")
+    action = models.CharField(max_length=100, blank=True, help_text="行動")
+    emotion = models.CharField(max_length=200, blank=True, help_text="気持ち")
+    body = models.CharField(max_length=100, blank=True, help_text="身体感覚")
     stress = models.CharField(
         max_length= 50,
-        choices = CONDITION
+        choices = CONDITION, blank=True, 
     )
-    strespoint =  models.CharField(max_length=100 ,help_text="行動")
-    def __str__(self):
-        return self.title
+    strespoint =  models.CharField(max_length=100, blank=True, help_text="行動")
