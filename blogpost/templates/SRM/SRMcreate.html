@@ -22,7 +22,7 @@
             <tbody>
             {% if SRMOptionlist.0.SRM_name1 != "" %}
                 <tr>
-                    <td>{{ SRMOptionlist.0.SRM_name1 }}：{{ form.action_time1 }}{{ form.action_time1.errors }}</td>
+                    <td>{{ SRMOptionlist.0.SRM_name1 }}：{{ form.action_time1.TimeField}}{{ form.action_time1.errors }}</td>
                     <td>{{ form.action_value1 }}{{ form.action_value1.errors }}(0～3)</td>
                 </tr>
             {% endif %}
@@ -83,7 +83,7 @@
             </tbody>
         <input type="submit" value="作成する">
         </table> 
-    
+     {{ form }}
     </form>
     
     <a class="btn btn-primary" href="{% url 'Top' %}" role="button">キャンセル</a>

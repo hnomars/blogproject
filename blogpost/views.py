@@ -1,8 +1,8 @@
 from django.shortcuts import render ,redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, TemplateView, UpdateView, TemplateView, FormView
-from .models import BlogModel, SRMModel, SRMOptionModel, WordModel, StPointModel ,StPointNameModel
-from .forms import SRMForm
+from .models import BlogModel, SRMModel, SRMOptionModel, WordModel, StPointModel ,StPointNameModel, MonitorModel
+from .forms import SRMForm, Moni_Form#, St_Form
 import os
 import openpyxl
 from django.http import HttpResponse
@@ -88,9 +88,9 @@ class SRMDetail(DetailView):
 class SRMUpdate(UpdateView):
     template_name = 'SRM/SRMupdate.html'
     model = SRMModel
-    fields = "__all__"
+    form_class = SRMForm
 
-    success_url = reverse_lazy('Top')
+    success_url = reverse_lazy('SRMlist')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
@@ -101,12 +101,19 @@ class SRMUpdate(UpdateView):
 class SRMCreate(CreateView):
     template_name = 'SRM/SRMcreate.html'
     model = SRMModel
-    fields = "__all__"
+    form_class = SRMForm
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['SRMOptionlist'] = SRMOptionModel.objects.all()        
         return context
+
+    success_url = reverse_lazy('Top')
+
+class SRMCreate2(CreateView):
+    template_name = 'SRM/SRMcreate2.html'
+    model = SRMModel
+    form_class = SRMForm
     success_url = reverse_lazy('Top')
 
 class SRM_opupdate(UpdateView):
@@ -139,6 +146,9 @@ class Top(TemplateView):
         context['srmtest'] = list(SRMModel.objects.all())
         srmmodellist = list(SRMModel.objects.all())        
         context['SRMmodels'] = [str(i) for i in srmmodellist]
+        st_modellist = list(StPointModel.objects.all())       
+        context['St_models'] = [str(i) for i in st_modellist]
+
         context['SRMname'] = 'SRMoptions.0.SRM_name1','SRMoptions.0.SRM_name2','SRMoptions.0.SRM_name3','SRMoptions.0.SRM_name4','SRMoptions.0.SRM_name5','SRMoptions.0.SRM_name6','SRMoptions.0.SRM_name7','SRMoptions.0.SRM_name8','SRMoptions.0.SRM_name9','SRMoptions.0.SRM_name10'
         context['word'] = list(WordModel.objects.all().values_list('word', flat=True))
         
@@ -178,7 +188,7 @@ def logoutview(request):
 class St_List(ListView):
     template_name = 'stpoint/st_list.html'
     model = StPointModel
-    paginate_by = 7
+    paginate_by = 14
 
     def get_queryset(self):
         StPoint = StPointModel.objects.order_by('-point_date')
@@ -194,6 +204,7 @@ class St_Create(CreateView):
     template_name = 'stpoint/st_create.html'
     model = StPointModel
     fields = "__all__"
+    # form_class = St_Form
     success_url = reverse_lazy('St_list')
 
     def get_context_data(self, **kwargs):
@@ -206,6 +217,7 @@ class St_Update(UpdateView):
     template_name = 'stpoint/st_update.html'
     model = StPointModel
     fields = "__all__"
+    # form_class = St_Form
 
     success_url = reverse_lazy('Top')
 
@@ -267,6 +279,37 @@ class Word_Update(UpdateView):
     fields = "__all__"
 
     success_url = reverse_lazy('Word_list')
+
+class Moni_Create(CreateView):
+    template_name = 'monitoring/create.html'
+    form_class = Moni_Form
+    model = MonitorModel
+
+    success_url = reverse_lazy('Top')
+
+class Moni_Update(UpdateView):
+    template_name = 'monitoring/update.html'
+    form_class = Moni_Form
+    model = MonitorModel
+
+    success_url = reverse_lazy('Moni_List')
+
+class Moni_List(ListView):
+    template_name = 'monitoring/list.html'
+    model = MonitorModel
+
+    def get_queryset(self):
+        date = MonitorModel.objects.order_by('-date', '-time')
+        return date    
+
+class Moni_Detile(DetailView):
+    template_name = 'monitoring/detail.html'
+    model = MonitorModel
+
+class Moni_Delete(DeleteView):
+    template_name = 'monitoring/delete.html'
+    model = MonitorModel
+    success_url = reverse_lazy('Moni_List')
 
 """ def alllist(request):
     data = BlogModel.objects.all()
@@ -350,8 +393,8 @@ def setPlt():
     print(x_dt)
     x =[]
     for i in range(len(x_dt)):
-        x.append(x_dt[i][0].strftime('%m/%d'))
-    
+        x.append(x_dt[i][0].strftime('%m%d'))
+    #活動量
     y_val = SRMModel.objects.all().values_list('action_value1',"action_value2","action_value3","action_value4","action_value5","action_value6","action_value7","action_value8","action_value9","action_value10").order_by('-SRM_date')[:14]
     y = [i for i in y_val]
 
@@ -361,10 +404,29 @@ def setPlt():
         y_sum.append(sum([0 if j is None else j for j in y[i]])) 
     print(y_sum)
 
-    plt.bar(x, y_sum, color='#00d5ff')
-    plt.title(r"$\bf{activelevel 14days nearly}$", color='#3407ba')
-    plt.xlabel("date")
-    plt.ylabel("activelevel")
+    #躁鬱度
+    y_moods = SRMModel.objects.all().values_list('mood_value').order_by('-SRM_date')[:14]
+    y_mood = [i for i in y_moods]
+
+    print(y_mood)
+    
+    fig, ax1 = plt.subplots()
+    ax2 = ax1.twinx()
+
+    ax1.set_ylim([0, 15])
+    ax2.set_ylim([-5, 5])
+
+    ax1.bar(x, y_sum, color='#00d5ff', label="活動量")
+    ax2.plot(x, y_mood, label="躁度")
+    ax1.set_title(r"$\bf{activelevel 14days nearly}$", family="serif", color='#3407ba')
+    ax1.set_ylabel("活動量")
+    ax2.set_ylabel("躁度")
+    ax1.set_xlabel("date")
+       
+    ax1.legend(bbox_to_anchor=(0, 1), loc='upper left', borderaxespad=0.5, fontsize=10)
+    ax2.legend(bbox_to_anchor=(0, 0.95), loc='upper left', borderaxespad=0.5, fontsize=10)
+
+    plt.show()
 
 # SVG化
 def plt2svg():

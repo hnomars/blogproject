@@ -3,7 +3,6 @@ from django.db.models.fields import AutoField
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import time
-from datetimewidget.widgets import DateTimeWidget
 
 # Create your models here.
 class SampleModel(models.Model):
@@ -140,6 +139,10 @@ class StPointNameModel(models.Model):
         return self.episode
     
 class StPointModel(models.Model):
+    pointlist = list(StPointNameModel.objects.all().values_list('point', flat=True).order_by("id"))
+    add0 = 30 - len(pointlist)
+    for i in range(add0):
+        pointlist.append(0)
     point_date = models.DateField(default=timezone.now, primary_key=True, help_text="日付") #unique_for_date=True
     point1 = models.BooleanField(default=False)
     point2 = models.BooleanField(default=False)
@@ -171,3 +174,30 @@ class StPointModel(models.Model):
     point28 = models.BooleanField(default=False)
     point29 = models.BooleanField(default=False)
     point30 = models.BooleanField(default=False)
+    sumpoint = models.IntegerField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.sumpoint = self.point1*self.pointlist[0]+self.point2*self.pointlist[1]+self.point3*self.pointlist[2]+self.point4*self.pointlist[3]+self.point5*self.pointlist[4]+self.point6*self.pointlist[5]+self.point7*self.pointlist[6]+self.point8*self.pointlist[7]+self.point9*self.pointlist[8]+self.point10*self.pointlist[9]+self.point11*self.pointlist[10]+self.point12*self.pointlist[11]+self.point13*self.pointlist[12]+self.point14*self.pointlist[13]+self.point15*self.pointlist[14]+self.point16*self.pointlist[15]+self.point17*self.pointlist[16]+self.point18*self.pointlist[17]+self.point19*self.pointlist[18]+self.point20*self.pointlist[19]+self.point21*self.pointlist[20]+self.point22*self.pointlist[21]+self.point23*self.pointlist[22]+self.point24*self.pointlist[23]+self.point25*self.pointlist[24]+self.point26*self.pointlist[25]+self.point27*self.pointlist[26]+self.point28*self.pointlist[27]+self.point29*self.pointlist[28]+self.point30*self.pointlist[29]
+
+        #self.sumpoint = self.point1*self.pointlist[0]+self.point2+self.point3+self.point4+self.point5+self.point6+self.point7+self.point8+self.point9+self.point10+self.point11+self.point12+self.point13+self.point14+self.point15+self.point16+self.point17+self.point18+self.point19+self.point20+self.point21+self.point22+self.point23+self.point24+self.point25+self.point26+self.point27+self.point28+self.point29+self.point30
+        super().save(*args, **kwargs)
+        print(self.sumpoint)
+
+    def __str__(self):
+        self.title = str(self.point_date)
+        return self.title
+
+class MonitorModel(models.Model):
+    date = models.DateField(default=timezone.now, help_text="日付") #unique_for_date=True
+    time = models.TimeField(default=timezone.now, blank=True, null=True, help_text="時間") #unique_for_date=True
+    event = models.CharField(max_length=100, blank=True, help_text="きっかけ")
+    think = models.CharField(max_length=100, blank=True, help_text="考え")
+    action = models.CharField(max_length=100, blank=True, help_text="行動")
+    emotion = models.CharField(max_length=200, blank=True, help_text="気持ち")
+    body = models.CharField(max_length=100, blank=True, help_text="身体感覚")
+    stress = models.CharField(
+        max_length= 50,
+        choices = CONDITION, blank=True, 
+    ) 
+    strespoint =  models.CharField(max_length=100, blank=True, help_text="行動")
+

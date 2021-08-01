@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+    <div class='container'>
+        <div class="card">
+            <h5 class="card-header">{{ object.datetime }}</h5>
+            <div class="card-body">
+                <h5 class="card-title">{{ object.event }}</h5>
+                <p class="card-text">{{ object.think }}</p>
+                <p class="card-text">{{ object.action }}</p>
+                <p class="card-text">{{ object.emotion }}</p>
+                <p class="card-text">{{ object.body }}</p>
+                <p class="card-text">{{ object.stress }}</p>
+                <p class="card-text">{{ object.strespoint }}</p>              
+                <a class="btn btn-primary" href="{% url 'Moni_List' %}" >一覧へ</a>
+                <a class="btn btn-primary" href="{% url 'Moni_Update' object.pk %}" >編集する</a>
+                <a class="btn btn-primary" href="{% url 'Moni_Delete' object.pk %}" >削除</a>
+        </div>
+    </div>
+{% endblock content %}

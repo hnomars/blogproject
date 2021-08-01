@@ -24,20 +24,26 @@
         <div class="card-body">
             <body>
                 <p>
+                <div class="card-body">
+                    <h5>自分を肯定する言葉</h5>
+                    <a>{% randomtag 10 15 %}</a>
+                </div>
                 <div class="d-grid gap-2">
-                    <h5>SRM 残り　エクセル　合計点　matplotlib 会員　デプロイ</h5>
-                    <a>{% SRM_check %}</a>
+                    <!-- <a>{% SRM_check %}</a> -->
                     {% if todaystr in SRMmodels %}
+                        <h5>モニタリングも記入しましょう</h5>
                         <a class="btn btn-warning" href="{% url 'SRMupdate' todaystr %}" role="button">今日のSRM(修正)</a>
                     {% else %}
+                        <h5>今日のSRMが未入力です</h5>
                         <a class="btn btn-warning" href="{% url 'SRMcreate' %}" role="button">今日のSRM(新規)</a>
                     {% endif %}
-                <h5></h5>
+                    <h5></h5>
 
-                <h5>今日のストレス得点表が未入力です</h5>
+                
                 {% if todaystr in St_models %}
                     <a class="btn btn-warning" href="{% url 'St_update' todaystr %}" role="button">今日の得点表(修正)</a>
                 {% else %}
+                    <h5>今日のストレス得点表が未入力です</h5>
                     <a class="btn btn-warning" href="{% url 'St_create' %}" role="button">今日の得点表(新規)</a>
                 {% endif %}
                 </div>    
@@ -46,10 +52,6 @@
                 <h5></h5>
 
             </body>
-        </div>
-        <div class="card-body">
-            <h5>自分を肯定する言葉</h5>
-            <a>{% randomtag 10 15 %}</a>
         </div>
         </div>
     </div>

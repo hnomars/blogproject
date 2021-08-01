@@ -7,8 +7,8 @@ register = template.Library() # Djangoのテンプレートタグライブラリ
 @register.simple_tag
 def SRM_check():
     n = len(SRMModel.objects.all())
-    if n >= 14:
-        n = 14
+    if n >= 5:
+        n = 5
     check = []
     ops = SRMOptionModel.objects.all()[0]
     print(ops.SRM_name7)

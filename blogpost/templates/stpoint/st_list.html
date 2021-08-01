@@ -20,22 +20,28 @@
 
   <h3>ストレス得点表</h3>
   <a class="btn btn-warning" href="{% url 'St_create' %}" role="button">新規作成</a>
-  <table border="1" style="border-collapse: collapse">
+  <table class="table table-striped table-hover table-sm"　style="text-align:center">
+    <thead>
+      <tr class="table-info">
+        <td style="text-align:center">項目＼日付</td>
+        {% for item in object_list %}
+          <td style="text-align:center">{{ item.point_date|date:"n/j"  }}<BR>
+          <a class="btn btn-primary" href="{% url 'St_update' item.pk %}" role="button">編集</a></td>
+        {% endfor %}
+      </tr>
 
-  <tbody style="text-align:center">
-    <tr>
-      <td style="text-align:center">項目＼日付</td>
-      {% for item in object_list %}
-        <td style="text-align:center">{{ item.point_date|date:"n/j"  }}<BR>
-        <a class="btn btn-primary" href="{% url 'St_update' item.pk %}" role="button">編集</a></td>
-      {% endfor %}
-    </tr>
+      <tr>
+        <td>得点</td>
+        {% for item in object_list %}
+          <td>{{ item.sumpoint }}</td>
+        {% endfor %}
+      </tr>
 
     {% if stNames.0 != None %}
       <tr>
         <td>{{ stNames.0 }}</td>
         {% for item in object_list %}
-          <td style="text-align:center">{% tfcheck item.point1 %}</td>
+          <td>{% tfcheck item.point1 %}</td>
         {% endfor %}
       </tr>
     {% endif %}
