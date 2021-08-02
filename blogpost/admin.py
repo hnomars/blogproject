@@ -2,7 +2,7 @@ from django.contrib import admin
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from import_export.formats import base_formats
-from .models import SampleModel, BlogModel, SRMModel, SRMOptionModel, WordModel, StPointModel, StPointNameModel 
+from .models import SampleModel, BlogModel, SRMModel, SRMOptionModel, WordModel, StPointModel, StPointNameModel, MonitorModel
 # Register your models here.
 
 class StPointNameModelResource(resources.ModelResource):
@@ -26,6 +26,10 @@ class SRMOptionModelResource(resources.ModelResource):
 class WordModelResource(resources.ModelResource):
     class Meta:
         model = WordModel
+
+class MonitorModelResource(resources.ModelResource):
+    class Meta:
+        model = MonitorModel
 
 admin.site.register(SampleModel)
 admin.site.register(BlogModel)
@@ -59,4 +63,9 @@ class SRMOptionModelAdmin(ImportExportModelAdmin):
 @admin.register(WordModel)
 class WordModelAdmin(ImportExportModelAdmin):
     resource_class = WordModelResource
+    formats = [base_formats.XLSX]
+
+@admin.register(MonitorModel)
+class MonitorModelAdmin(ImportExportModelAdmin):
+    resource_class = MonitorModelResource
     formats = [base_formats.XLSX]

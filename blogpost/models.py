@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models.fields import AutoField
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import time
@@ -174,6 +173,7 @@ class StPointModel(models.Model):
     point28 = models.BooleanField(default=False)
     point29 = models.BooleanField(default=False)
     point30 = models.BooleanField(default=False)
+<<<<<<< HEAD
     sumpoint = models.IntegerField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
@@ -182,6 +182,8 @@ class StPointModel(models.Model):
         #self.sumpoint = self.point1*self.pointlist[0]+self.point2+self.point3+self.point4+self.point5+self.point6+self.point7+self.point8+self.point9+self.point10+self.point11+self.point12+self.point13+self.point14+self.point15+self.point16+self.point17+self.point18+self.point19+self.point20+self.point21+self.point22+self.point23+self.point24+self.point25+self.point26+self.point27+self.point28+self.point29+self.point30
         super().save(*args, **kwargs)
         print(self.sumpoint)
+=======
+>>>>>>> 4a168083d31c4a7321bc9d9e9b5115c490fd723d
 
     def __str__(self):
         self.title = str(self.point_date)
@@ -198,6 +200,11 @@ class MonitorModel(models.Model):
     stress = models.CharField(
         max_length= 50,
         choices = CONDITION, blank=True, 
+<<<<<<< HEAD
     ) 
     strespoint =  models.CharField(max_length=100, blank=True, help_text="行動")
 
+=======
+    )
+    strespoint =  models.CharField(max_length=100, blank=True, help_text="行動")
+>>>>>>> 4a168083d31c4a7321bc9d9e9b5115c490fd723d
