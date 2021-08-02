@@ -2,11 +2,7 @@ from django.shortcuts import render ,redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, TemplateView, UpdateView, TemplateView, FormView
 from .models import BlogModel, SRMModel, SRMOptionModel, WordModel, StPointModel ,StPointNameModel, MonitorModel
-<<<<<<< HEAD
 from .forms import SRMForm, Moni_Form#, St_Form
-=======
-from .forms import SRMForm, St_Form, Moni_Form
->>>>>>> 4a168083d31c4a7321bc9d9e9b5115c490fd723d
 import os
 import openpyxl
 from django.http import HttpResponse
@@ -152,12 +148,6 @@ class Top(TemplateView):
         context['SRMmodels'] = [str(i) for i in srmmodellist]
         st_modellist = list(StPointModel.objects.all())       
         context['St_models'] = [str(i) for i in st_modellist]
-<<<<<<< HEAD
-
-=======
-        print(context['SRMmodels'])
-        print(context['St_models'])
->>>>>>> 4a168083d31c4a7321bc9d9e9b5115c490fd723d
         context['SRMname'] = 'SRMoptions.0.SRM_name1','SRMoptions.0.SRM_name2','SRMoptions.0.SRM_name3','SRMoptions.0.SRM_name4','SRMoptions.0.SRM_name5','SRMoptions.0.SRM_name6','SRMoptions.0.SRM_name7','SRMoptions.0.SRM_name8','SRMoptions.0.SRM_name9','SRMoptions.0.SRM_name10'
         context['word'] = list(WordModel.objects.all().values_list('word', flat=True))
         
@@ -212,12 +202,8 @@ class St_List(ListView):
 class St_Create(CreateView):
     template_name = 'stpoint/st_create.html'
     model = StPointModel
-<<<<<<< HEAD
     fields = "__all__"
     # form_class = St_Form
-=======
-    form_class = St_Form
->>>>>>> 4a168083d31c4a7321bc9d9e9b5115c490fd723d
     success_url = reverse_lazy('St_list')
 
     def get_context_data(self, **kwargs):
@@ -229,12 +215,8 @@ class St_Create(CreateView):
 class St_Update(UpdateView):
     template_name = 'stpoint/st_update.html'
     model = StPointModel
-<<<<<<< HEAD
     fields = "__all__"
     # form_class = St_Form
-=======
-    form_class = St_Form
->>>>>>> 4a168083d31c4a7321bc9d9e9b5115c490fd723d
 
     success_url = reverse_lazy('Top')
 
@@ -309,10 +291,6 @@ class Moni_Update(UpdateView):
     form_class = Moni_Form
     model = MonitorModel
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4a168083d31c4a7321bc9d9e9b5115c490fd723d
     success_url = reverse_lazy('Moni_List')
 
 class Moni_List(ListView):
