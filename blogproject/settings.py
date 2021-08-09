@@ -23,10 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6m7qffxv8knxdkesf0k&sjjkqs(!bpsz&c%lhg@#5o2g4cbces'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True #False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [] #"hnoma.pythonanywhere.com"
 
 # Application definition
 
@@ -40,6 +39,7 @@ INSTALLED_APPS = [
     'blogpost.apps.BlogpostConfig',
     'blogpost.templatetags',
     'import_export',
+    'widget_tweaks',
     # 'datetimewidget',
     # 'blogpost.templatetags.options'
 ]
@@ -132,3 +132,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import os
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)

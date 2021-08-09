@@ -1,8 +1,8 @@
 from django.urls import path
 from . import views
 from .views import BlogList, BlogDetail, BlogCreate, BlogDelete, BlogUpdate, Excel, AllList, AllUpdate
-from .views import SRMList, SRMDetail, SRMUpdate, SRMCreate, SRMCreate2, SRM_opupdate, Top, St_List, St_Create, St_Update, SRM_OpList, Options, St_Opupdate, St_Oplist, Word_List, Word_Update, St_Opcreate, Word_Create
-from .views import Moni_Create, Moni_List, Moni_Update, Moni_Detile, Moni_Delete  
+from .views import SRMList, SRMDetail, SRMUpdate, SRMCreate, SRMCreate2, SRM_opupdate, Top, St_List, St_Create, St_Update, SRM_OpList, Options, Word_Update, Word_List, Word_Create, St_Opupdate, St_Oplist, St_Opcreate
+from .views import Exer_Create, Exer_List, Exer_Update, Exer_Detile, Exer_Delete, Moni_Create, Moni_List, Moni_Update, Moni_Detile, Moni_Delete 
 from .views import signupview, loginview, logoutview ,SRMglaph
 
 urlpatterns = [
@@ -28,6 +28,12 @@ urlpatterns = [
     path('monitoring/update/<str:pk>/', Moni_Update.as_view(), name='Moni_Update'),
     path('monitoring/delete/<str:pk>/', Moni_Delete.as_view(), name='Moni_Delete'),
     path('monitoring/detail/<str:pk>/', Moni_Detile.as_view(), name='Moni_Detile'),
+
+    path('exercise/list/', Exer_List.as_view(), name='Exer_List'),
+    path('exercise/create/', Exer_Create.as_view(), name='Exer_Create'),
+    path('exercise/update/<str:pk>/', Exer_Update.as_view(), name='Exer_Update'),
+    path('exercise/delete/<str:pk>/', Exer_Delete.as_view(), name='Exer_Delete'),
+    path('exercise/detail/<str:pk>/', Exer_Detile.as_view(), name='Exer_Detile'),
 
     path('options/op_list/', Options.as_view(), name='Options'),
     path('options/SRM_oplist/', SRM_OpList.as_view(), name='SRM_oplist'),

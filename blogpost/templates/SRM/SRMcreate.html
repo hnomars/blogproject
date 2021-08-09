@@ -20,11 +20,7 @@
             <tbody>
             {% if SRMOptionlist.0.SRM_name1 is not None %}
                 <tr>
-<<<<<<< HEAD
-                    <td>{{ SRMOptionlist.0.SRM_name1 }}：{{ form.action_time1.TimeField}}{{ form.action_time1.errors }}</td>
-=======
-                    <td>{{ SRMOptionlist.0.SRM_name1 }}：{{ form.action_time1}}{{ form.action_time1.errors }}</td>
->>>>>>> 4a168083d31c4a7321bc9d9e9b5115c490fd723d
+                    <td>{{ SRMOptionlist.0.SRM_name1 }}：{{ form.action_time1 }}{{ form.action_time1.errors }}</td>
                     <td>{{ form.action_value1 }}{{ form.action_value1.errors }}(0～3)</td>
                 </tr>
             {% endif %}
@@ -89,12 +85,8 @@
                 <td>出来事：{{ form.ivent }}{{ form.ivent.errors }}</td>
             </tr>   
             </tbody>
-        </table> 
-<<<<<<< HEAD
-     {{ form }}
-=======
-        <input class="btn btn-primary" type="submit" value="作成する">
->>>>>>> 4a168083d31c4a7321bc9d9e9b5115c490fd723d
+        </table>
+        <input type="submit" value="作成する">
     </form>
 
     <a class="btn btn-primary" href="{% url 'Top' %}" role="button">キャンセル</a>

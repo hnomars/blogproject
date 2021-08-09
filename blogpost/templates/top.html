@@ -20,7 +20,7 @@
     <div class='container'>
         <div class='card'>
             <h2 class="p-3 mb-2 bg-success text-white">今日は{{ todaystr }}です</h2>
-
+            <p>{% url "https://docs.google.com/presentation/d/1Rt5SwNzK1gqk0KPfck_q6UGiiPB81DZXyKSYmY2nVqM/edit?usp=sharing" % }</p>
         <div class="card-body">
             <body>
                 <p>
@@ -29,17 +29,10 @@
                     <a>{% randomtag 10 15 %}</a>
                 </div>
                 <div class="d-grid gap-2">
-<<<<<<< HEAD
                     <!-- <a>{% SRM_check %}</a> -->
                     {% if todaystr in SRMmodels %}
                         <h5>モニタリングも記入しましょう</h5>
                         <a class="btn btn-warning" href="{% url 'SRMupdate' todaystr %}" role="button">今日のSRM(修正)</a>
-=======
-                    <h5>SRM 残り 合計点　matplotlib 会員</h5>
-                    <a>{% SRM_check %}</a>
-                    {% if todaystr in SRMmodels %}
-                        <a class="btn btn-success" href="{% url 'SRMupdate' todaystr %}" role="button">今日のSRM(修正)</a>
->>>>>>> 4a168083d31c4a7321bc9d9e9b5115c490fd723d
                     {% else %}
                         <h5>今日のSRMが未入力です</h5>
                         <a class="btn btn-warning" href="{% url 'SRMcreate' %}" role="button">今日のSRM(新規)</a>
@@ -56,7 +49,9 @@
                 <h5></h5>
 
                 
-                <h5>モニタリング<a class="btn btn-info" href="{% url 'Moni_Create' %}" role="button">モニタリングの作成</a></h5>
+                <h5>嫌な目に合ったら<a class="btn btn-info" href="{% url 'Moni_Create' %}" role="button">モニタリングの作成</a></h5>
+                <h5>不安恐怖怒り<a class="btn btn-info" href="{% url 'Exer_Create' %}" role="button">考えを柔軟する</a></h5>
+
 
                 </div>    
                 </p>

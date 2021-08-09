@@ -1,8 +1,8 @@
 from django.shortcuts import render ,redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, TemplateView, UpdateView, TemplateView, FormView
-from .models import BlogModel, SRMModel, SRMOptionModel, WordModel, StPointModel ,StPointNameModel, MonitorModel
-from .forms import SRMForm, Moni_Form#, St_Form
+from .models import BlogModel, SRMModel, SRMOptionModel, WordModel, StPointModel, ExerciseModel, MonitorModel, StPointNameModel 
+from .forms import SRMForm, Moni_Form, Exer_Form#, St_Form
 import os
 import openpyxl
 from django.http import HttpResponse
@@ -196,7 +196,7 @@ class St_List(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['stcategolys'] = list(StPointModel.objects.all())
-        context['stNames'] = list(StPointNameModel.objects.all())
+        # context['stNames'] = list(StPointNameModel.objects.all())
         return context
     
 class St_Create(CreateView):
@@ -209,7 +209,7 @@ class St_Create(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['stcategolys'] = list(StPointModel.objects.all())
-        context['stNames'] = list(StPointNameModel.objects.all())
+        # context['stNames'] = list(StPointNameModel.objects.all())
         return context    
 
 class St_Update(UpdateView):
@@ -223,7 +223,7 @@ class St_Update(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['stcategolys'] = list(StPointModel.objects.all())
-        context['stNames'] = list(StPointNameModel.objects.all())
+        # context['stNames'] = list(StPointNameModel.objects.all())
         return context  
 
 class Options(TemplateView):
@@ -263,7 +263,7 @@ class Word_List(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['stcategolys'] = list(StPointModel.objects.all())
-        context['stNames'] = list(StPointNameModel.objects.all())
+        # context['stNames'] = list(StPointNameModel.objects.all())
         return context
 
 class Word_Create(CreateView):
@@ -308,6 +308,36 @@ class Moni_Detile(DetailView):
 class Moni_Delete(DeleteView):
     template_name = 'monitoring/delete.html'
     model = MonitorModel
+    success_url = reverse_lazy('Exer_List')
+
+
+class Exer_Create(CreateView):
+    template_name = 'exercise/create.html'
+    form_class = Exer_Form
+    model = ExerciseModel
+    success_url = reverse_lazy('Exer_List')
+
+class Exer_Update(UpdateView):
+    template_name = 'exercise/update.html'
+    form_class = Exer_Form
+    model = ExerciseModel
+    success_url = reverse_lazy('Exer_List')
+
+class Exer_List(ListView):
+    template_name = 'exercise/list.html'
+    model = ExerciseModel
+    
+    # def get_queryset(self):
+    #     date = ExerciseModel.objects.order_by('-date', '-time')
+    #     return date    
+
+class Exer_Detile(DetailView):
+    template_name = 'exercise/detail.html'
+    model = ExerciseModel
+
+class Exer_Delete(DeleteView):
+    template_name = 'exercise/delete.html'
+    model = ExerciseModel
     success_url = reverse_lazy('Moni_List')
 
 """ def alllist(request):
@@ -382,7 +412,7 @@ class SRMglaph(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['stcategolys'] = list(StPointModel.objects.all())
-        context['stNames'] = list(StPointNameModel.objects.all())
+        # context['stNames'] = list(StPointNameModel.objects.all())
         return context
 
 def setPlt():

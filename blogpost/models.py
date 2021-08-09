@@ -93,13 +93,16 @@ class SRMModel(models.Model):
         return self.title
 
 SITUATION = [
-    ('always','いつでも'),
-    ('Sad','悲しい時に送る言葉'),
-    ('Sleepless','眠っていない'),
-    ('high','躁度が高い'),
-    ('low','躁度が低い'),
-    ('angry','イライラしている'),
-    ('hurry','焦っている'),
+    ('いつでも','いつでも'),
+    ('不安','不安'),
+    ('恐怖','恐怖'),
+    ('悲しい時に送る言葉','悲しい時に送る言葉'),
+    ('眠っていない','眠っていない'),
+    ('躁度が高い','躁度が高い'),
+    ('躁度が低い','躁度が低い'),
+    ("ストレス値高い","ストレス値高い"),
+    ('イライラしている','イライラしている'),
+    ('焦っている','焦っている'),
     ]
 
 class WordModel(models.Model):
@@ -113,17 +116,19 @@ class WordModel(models.Model):
         return self.word
 
 CONDITION = [
-    ("1",'焦り'),
-    ("2",'睡眠不足'),
-    ("3",'生活リズム'),
-    ("4",'イライラ'),
-    ("5",'他人の仕事'),
-    ("6",'不要な共感'),
-    ("7",'過食'),
-    ("8",'疲れ'),
-    ("9",'怒り'),
-    ("10",'我慢'),
-    ("11",'会話不足'),
+    ("焦り",'焦り'),
+    ("不安",'不安'),
+    ("恐怖",'恐怖'),
+    ("睡眠不足",'睡眠不足'),
+    ("生活リズム",'生活リズム'),
+    ("イライラ",'イライラ'),
+    ("他人の仕事",'他人の仕事'),
+    ("不要な共感",'不要な共感'),
+    ("過食",'過食'),
+    ("疲れ",'疲れ'),
+    ("怒り",'怒り'),
+    ("我慢",'我慢'),
+    ("会話不足",'会話不足'),
     ]
 
 class StPointNameModel(models.Model):
@@ -190,14 +195,45 @@ class StPointModel(models.Model):
 class MonitorModel(models.Model):
     date = models.DateField(default=timezone.now, help_text="日付") #unique_for_date=True
     time = models.TimeField(default=timezone.now, blank=True, null=True, help_text="時間") #unique_for_date=True
-    event = models.CharField(max_length=100, blank=True, help_text="きっかけ")
-    think = models.CharField(max_length=100, blank=True, help_text="考え")
-    action = models.CharField(max_length=100, blank=True, help_text="行動")
-    emotion = models.CharField(max_length=200, blank=True, help_text="気持ち")
-    body = models.CharField(max_length=100, blank=True, help_text="身体感覚")
+    event = models.CharField(max_length=100, blank=True, null=True, help_text="きっかけ")
+    think = models.CharField(max_length=100, blank=True, null=True, help_text="考え")
+    action = models.CharField(max_length=100, blank=True, null=True, help_text="行動")
+    emotion = models.CharField(max_length=200, blank=True, null=True, help_text="気持ち")
+    body = models.CharField(max_length=100, blank=True, null=True, help_text="身体感覚")
     stress = models.CharField(
         max_length= 50,
+        choices = CONDITION, blank=True, null=True,
+    )
+    strespoint =  models.CharField(max_length=100, blank=True, null=True, help_text="行動")
+
+class ExerciseModel(models.Model):
+    falls = [("なし",'なし'),("①",'①'),("②",'②')]
+    date = models.DateField(default=timezone.now, help_text="記録した日付") #unique_for_date=True
+    time = models.TimeField(default=timezone.now, blank=True, null=True, help_text="記録した時間") #unique_for_date=True
+    think = models.TextField(max_length=100, blank=True, help_text="浮かんだ考え心のつぶやき")
+    stress_1 = models.CharField(
+        max_length= 10,
         choices = CONDITION, blank=True, 
     )
-    strespoint =  models.CharField(max_length=100, blank=True, help_text="行動")
+    strespoint_1 =  models.IntegerField(blank=True, help_text="気持ちの強さ１")
+    stress_2 = models.CharField(
+        max_length= 10,
+        choices = CONDITION, blank=True, 
+    )
+    strespoint_2 =  models.IntegerField(blank=True, help_text="気持ちの強さ２（あれば）")
+    
+    fall = models.CharField(max_length=5, blank=True, choices = falls, help_text="考えの落とし穴")
+    evidence = models.TextField(max_length=100, blank=True, help_text="その根拠")
+    opposite = models.TextField(max_length=200, blank=True, help_text="気持ち")
+    stress_3 = models.CharField(
+        max_length= 10,
+        choices = CONDITION, blank=True, 
+    )
+    strespoint_3 =  models.IntegerField(blank=True, help_text="気持ちの強さ１")
+    stress_4 = models.CharField(
+        max_length= 10,
+        choices = CONDITION, blank=True, 
+    )
+    strespoint_4 =  models.IntegerField(blank=True, help_text="気持ちの強さ２（あれば）")
+    
 

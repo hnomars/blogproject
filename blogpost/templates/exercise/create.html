@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<div class='container'> 
+    <form action="" method="POST">{% csrf_token %}
+        <thead>
+            <table class="table table-striped table-hover table-sm"><thead>
+                <tr><td>日付：{{ form.date }}{{ form.date.errors }}</td></tr>
+                <tr><td>時間：{{ form.time }}{{ form.time.errors }}</td></tr>
+                    <tr class="table-info">
+                        <th>{{ form.think.help_text }}</th>
+                        <th>ストレス</th>
+                        <th>評価0-100</th>
+                        <th>根拠・経験則</th>
+                        <th>反証・友人なら</th>
+                        <th>{{ form.fall.help_text }}</th>
+                        <th>反証を経て</th>
+                        <th>評価0-100</th>
+                    </tr>
+            </thead>
+            <tbody>
+             <tr>
+                <td>{{ form.think }}{{ form.think.errors }}</td>
+                <td>{{ form.stress_1 }}{{ form.stress_1.errors }}</td>
+                <td>{{ form.strespoint_1 }}{{ form.strespoint_1.errors }}</td>
+                <td>{{ form.fall }}{{ form.think.fall }}</td>
+                <td>{{ form.evidence }}{{ form.think.evidence }}</td>
+                <td>{{ form.opposite }}{{ form.think.opposite }}</td>
+                <td>{{ form.stress_3 }}{{ form.think.stress_3 }}</td>
+                <td>{{ form.strespoint_3 }}{{ form.think.strespoint_3 }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{{ form.stress_2 }}{{ form.stress_2.errors }}</td>
+                <td>{{ form.strespoint_2 }}{{ form.strespoint_2.errors }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ form.stress_4 }}{{ form.think.stress_4 }}</td>
+                <td>{{ form.strespoint_4 }}{{ form.think.strespoint_4 }}</td>
+            </tr>   
+            </tbody>
+        </table>
+        <input type="submit" value="作成する">
+    </form>
+
+    <a class="btn btn-primary" href="{% url 'Top' %}" role="button">キャンセル</a>
+</div>
+{% endblock content %}
