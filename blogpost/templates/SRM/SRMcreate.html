@@ -81,9 +81,12 @@
             <tr>
                 <td>気分：{{ form.mood_value }}{{ form.mood_value.errors }}(0～3)</td>
             </tr>
+            <tr>    
+                <td>一日：{{ form.day }}{{ form.day.errors }}</td>
+            </tr>   
             <tr>
                 <td>出来事：{{ form.ivent }}{{ form.ivent.errors }}</td>
-            </tr>   
+            </tr>
             </tbody>
         </table>
         <input type="submit" value="作成する">

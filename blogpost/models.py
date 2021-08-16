@@ -41,9 +41,10 @@ class SRMOptionModel(models.Model):
         return self.title
 
 class SRMModel(models.Model):
-    actions = ["昨就寝","起床","接触","集団","夕食","#6","#7","#8","#9","#10"]
+    actions = ["昨就寝","起床","接触","集団","帰宅","夕食","#7","#8","#9","#10"]
     action_times = ["action" + str(i) +"_time" for i in range(len(actions))]  
-    default_times = [time(21,00,00,0),time(4,30,00,0),time(6,30,00,0),time(9,00,00,0),time(18,30,00,0),time(12,00,00,0),time(12,00,00,0),time(12,00,00,0),time(12,00,00,0),time(12,00,00,0)]
+    default_times = [time(21,00,00,0),time(4,30,00,0),time(6,30,00,0),time(9,00,00,0),time(17,30,00,0),time(18,30,00,0),time(12,00,00,0),time(12,00,00,0),time(12,00,00,0),time(12,00,00,0)]
+    default_values = [2,0,2,2,2,2,0,0,0,0]
     action_values = ["action" + str(i) +"_value" for i in range(len(actions))]  
     #活動量の数値の範囲
     value_range1 =  ((0,0),(1,1),(2,2),(3,3))
@@ -56,37 +57,39 @@ class SRMModel(models.Model):
     SRM_date = models.DateField(primary_key=True, default=timezone.localtime, help_text="日付")  #db_index=True
 
     action_time1 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value1 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value1 = models.IntegerField(default=default_values[i], choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time2 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value2 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value2 = models.IntegerField(default=default_values[i], choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time3 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value3 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value3 = models.IntegerField(default=default_values[i], choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time4 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value4 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value4 = models.IntegerField(default=default_values[i], choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time5 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value5 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value5 = models.IntegerField(default=default_values[i], choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time6 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value6 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value6 = models.IntegerField(default=default_values[i], choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time7 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value7 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value7 = models.IntegerField(default=default_values[i], choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time8 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value8 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value8 = models.IntegerField(default=default_values[i], choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time9 = models.TimeField(default=default_times[i], blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value9 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value9 = models.IntegerField(default=default_values[i], choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
     i += 1
     action_time10 = models.TimeField(default=default_times[i] , blank=True, null=True, help_text=actions[i] + "の時間")
-    action_value10 = models.IntegerField(choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+    action_value10 = models.IntegerField(default=default_values[i], choices=value_range1, blank=True, null=True, help_text=actions[i] +"の活動量 0～3")
+
+    day = models.CharField(max_length=20, blank=True, null=True)
 
     mood_value = models.IntegerField(choices=value_range2, default=None, blank=True, null=True, help_text="気分の値 -5～5")
-    ivent = models.CharField(max_length=50, blank=True, null=True)
+    ivent = models.TextField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         self.title = str(self.SRM_date)
@@ -116,6 +119,7 @@ class WordModel(models.Model):
         return self.word
 
 CONDITION = [
+    ('なし','なし'),
     ("焦り",'焦り'),
     ("不安",'不安'),
     ("恐怖",'恐怖'),
@@ -210,30 +214,30 @@ class ExerciseModel(models.Model):
     falls = [("なし",'なし'),("①",'①'),("②",'②')]
     date = models.DateField(default=timezone.now, help_text="記録した日付") #unique_for_date=True
     time = models.TimeField(default=timezone.now, blank=True, null=True, help_text="記録した時間") #unique_for_date=True
-    think = models.TextField(max_length=100, blank=True, help_text="浮かんだ考え心のつぶやき")
+    think = models.TextField(max_length=100, blank=True, null=True, help_text="浮かんだ考え心のつぶやき")
     stress_1 = models.CharField(
-        max_length= 10,
-        choices = CONDITION, blank=True, 
+        max_length= 30,
+        choices = CONDITION, blank=True, null=True, default='なし',
     )
-    strespoint_1 =  models.IntegerField(blank=True, help_text="気持ちの強さ１")
+    strespoint_1 =  models.IntegerField(blank=True, null=True, default=0, help_text="気持ちの強さ１")
     stress_2 = models.CharField(
         max_length= 10,
-        choices = CONDITION, blank=True, 
+        choices = CONDITION, blank=True, null=True, default='なし',
     )
-    strespoint_2 =  models.IntegerField(blank=True, help_text="気持ちの強さ２（あれば）")
+    strespoint_2 =  models.IntegerField(blank=True, null=True, default=0, help_text="気持ちの強さ２（あれば）")
     
-    fall = models.CharField(max_length=5, blank=True, choices = falls, help_text="考えの落とし穴")
-    evidence = models.TextField(max_length=100, blank=True, help_text="その根拠")
-    opposite = models.TextField(max_length=200, blank=True, help_text="気持ち")
+    fall = models.CharField(default='なし', max_length=5, blank=True, null=True, choices = falls, help_text="考えの落とし穴")
+    evidence = models.TextField(max_length=100, blank=True, null=True, help_text="その根拠")
+    opposite = models.TextField(max_length=200, blank=True, null=True, help_text="気持ち")
     stress_3 = models.CharField(
         max_length= 10,
-        choices = CONDITION, blank=True, 
+        choices = CONDITION, blank=True, null=True, default='なし',
     )
-    strespoint_3 =  models.IntegerField(blank=True, help_text="気持ちの強さ１")
+    strespoint_3 =  models.IntegerField(blank=True, null=True, default=0, help_text="気持ちの強さ１")
     stress_4 = models.CharField(
         max_length= 10,
-        choices = CONDITION, blank=True, 
+        choices = CONDITION, blank=True, null=True, default='なし',
     )
-    strespoint_4 =  models.IntegerField(blank=True, help_text="気持ちの強さ２（あれば）")
+    strespoint_4 =  models.IntegerField(blank=True, null=True, default=0, help_text="気持ちの強さ２（あれば）")
     
 

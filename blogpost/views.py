@@ -153,7 +153,6 @@ class Top(TemplateView):
         
         stmodellist = list(SRMModel.objects.all())
         context['St_models'] = [str(i) for i in stmodellist]
-
         return context
 
 def signupview(request):
@@ -196,7 +195,7 @@ class St_List(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['stcategolys'] = list(StPointModel.objects.all())
-        # context['stNames'] = list(StPointNameModel.objects.all())
+        context['stNames'] = list(StPointNameModel.objects.all())
         return context
     
 class St_Create(CreateView):
@@ -209,7 +208,7 @@ class St_Create(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['stcategolys'] = list(StPointModel.objects.all())
-        # context['stNames'] = list(StPointNameModel.objects.all())
+        context['stNames'] = list(StPointNameModel.objects.all())
         return context    
 
 class St_Update(UpdateView):
@@ -223,7 +222,7 @@ class St_Update(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['stcategolys'] = list(StPointModel.objects.all())
-        # context['stNames'] = list(StPointNameModel.objects.all())
+        context['stNames'] = list(StPointNameModel.objects.all())
         return context  
 
 class Options(TemplateView):
@@ -263,7 +262,7 @@ class Word_List(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['stcategolys'] = list(StPointModel.objects.all())
-        # context['stNames'] = list(StPointNameModel.objects.all())
+        context['stNames'] = list(StPointNameModel.objects.all())
         return context
 
 class Word_Create(CreateView):
@@ -327,9 +326,9 @@ class Exer_List(ListView):
     template_name = 'exercise/list.html'
     model = ExerciseModel
     
-    # def get_queryset(self):
-    #     date = ExerciseModel.objects.order_by('-date', '-time')
-    #     return date    
+    def get_queryset(self):
+        date = ExerciseModel.objects.order_by('-date', '-time')
+        return date    
 
 class Exer_Detile(DetailView):
     template_name = 'exercise/detail.html'
@@ -412,7 +411,7 @@ class SRMglaph(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         context['stcategolys'] = list(StPointModel.objects.all())
-        # context['stNames'] = list(StPointNameModel.objects.all())
+        context['stNames'] = list(StPointNameModel.objects.all())
         return context
 
 def setPlt():

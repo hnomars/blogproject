@@ -28,7 +28,7 @@ class SRMForm(forms.ModelForm):
         model = SRMModel
         fields = ['SRM_date', 'action_time1', 'action_value1', 'action_time2', 'action_value2', 'action_time3', 'action_value3', 
             'action_time4', 'action_value4', 'action_time5', 'action_value5', 'action_time6', 'action_value6', 'action_time7', 'action_value7',
-            'action_time8', 'action_value8', 'action_time9', 'action_value9', 'action_time10', 'action_value10', 'mood_value', 'ivent']
+            'action_time8', 'action_value8', 'action_time9', 'action_value9', 'action_time10', 'action_value10', 'mood_value', 'ivent', 'day']
         widgets = {
             'SRM_date': forms.DateInput(attrs={"type":"date"}),
             'action_time1': forms.TimeInput(attrs={"type":"time"}),
@@ -41,6 +41,7 @@ class SRMForm(forms.ModelForm):
             'action_time8': forms.TimeInput(attrs={"type":"time"}),
             'action_time9': forms.TimeInput(attrs={"type":"time"}),
             'action_time10': forms.TimeInput(attrs={"type":"time"}),  
+            'day': forms.Select(choices=[('仕事', '仕事'),('休日', '休日'),('残業', '残業'),('疲れ休日', '疲れ休日')]),
         }
 
 class St_Form(forms.ModelForm):
@@ -122,6 +123,6 @@ class Exer_Form(forms.ModelForm):
         widgets = {
             'date': forms.DateInput(attrs={"type":"date"}),
             'time': forms.TimeInput(attrs={"type":"time"}),
-            'strespoint_1': forms.NumberInput(attrs={'rows':2, 'cols':2}),
-            'strespoint_2': forms.NumberInput(attrs={'rows':2, 'cols':2}),
+            # 'strespoint_1': forms.NumberInput(attrs={'rows':2, 'cols':2}),
+            # 'strespoint_2': forms.NumberInput(attrs={'rows':2, 'cols':2}),
         }
