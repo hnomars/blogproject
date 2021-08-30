@@ -23,7 +23,12 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import io
 from django.http import HttpResponse
-
+#mail用（重複ありか）
+from django.shortcuts import render
+from django.core.mail import BadHeaderError, send_mail
+from django.http import HttpResponse, HttpResponseRedirect
+from django.conf import settings
+import datetime 
 # 以下追加モジュール
 
 class BlogList(ListView):
@@ -151,7 +156,7 @@ class Top(TemplateView):
         context['SRMname'] = 'SRMoptions.0.SRM_name1','SRMoptions.0.SRM_name2','SRMoptions.0.SRM_name3','SRMoptions.0.SRM_name4','SRMoptions.0.SRM_name5','SRMoptions.0.SRM_name6','SRMoptions.0.SRM_name7','SRMoptions.0.SRM_name8','SRMoptions.0.SRM_name9','SRMoptions.0.SRM_name10'
         context['word'] = list(WordModel.objects.all().values_list('word', flat=True))
         
-        stmodellist = list(SRMModel.objects.all())
+        stmodellist = list(StPointModel.objects.all())
         context['St_models'] = [str(i) for i in stmodellist]
         return context
 
@@ -402,6 +407,63 @@ def csvExport(request):
     # for post in SRMModel.objects.all():
     #     writer.writerow([post.pk, post.name])
     return response
+
+def index(request):
+    today = str(datetime.date.today())
+    res = ""
+    testlist = StPointModel.objects.all().filter(point_date=today)
+    for i in testlist:
+        point = i.sumpoint
+    if point =="":
+        print("該当なし")
+        res = "ストレスポイント未入力です"
+    else :
+        print(point)
+
+    if point >= 250:
+        pointover = "ストレスの多い一日でした（250点以上）"
+
+    SRMlist = SRMModel.objects.all().filter(SRM_date=today)
+
+    for i in SRMlist:
+        moodpoint = i.mood_value
+    if point =="":
+        print("該当なし")
+        res = "SRM未入力です"
+    else :
+        print("今日の躁鬱度は " +str(moodpoint)+ "です。")
+        moodreview =[
+            "拘束して病院に行ってください。",
+            "拘束して病院に行ってください。",
+            "大鬱状態です。",
+            "かなり気分が落ち気味です。",
+            "やや気分が落ち気味です。",
+            "とても落ち着いた一日でした。",
+            "やや気分が上がっています。",
+            "かなり気分が上がっています。",
+            "躁状態です",
+            "拘束して病院に行ってください。",
+            "拘束して病院に行ってください。",
+            ]
+        print(moodreview[int(moodpoint)+5])
+
+
+    """題名"""
+    subject = str(today)+"の報告"
+    """本文"""
+    message = "はやとです(^O^)\n今日のストレス得点は "+str(point)+" です。\n"+str(pointover)+"\n今日の躁鬱度は " +str(moodpoint)+ "です。\n"+moodreview[int(moodpoint)+5]
+    """送信元メールアドレス"""
+    from_email = "h.noma.r.s@gmail.com"
+    """宛先メールアドレス"""
+    recipient_list = [
+        "h.noma.r.s@gmail.com"
+    ]
+
+    if res == "":
+        send_mail(subject, message, from_email, recipient_list)
+        res = "送信成功しました"
+
+    return HttpResponse('<h1>'+ res +'</h1>')
 
 #グラフ作成
 

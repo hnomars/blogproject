@@ -47,6 +47,8 @@ urlpatterns = [
     
     path('SRMglaph/', views.get_svg, name='glaph1'),
     
+    path('top/mail', views.index, name='index'),
+    
     #以下不使用　paiza用
     path('list/', BlogList.as_view(),name='list'),
     path('detail/<int:pk>/', BlogDetail.as_view(),name='detail'),

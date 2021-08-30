@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'blogpost.apps.BlogpostConfig',
     'blogpost.templatetags',
     'import_export',
-    'widget_tweaks',
+    # 'sendmail',
+    # 'widget_tweaks',
     # 'datetimewidget',
     # 'blogpost.templatetags.options'
 ]
@@ -138,3 +139,11 @@ import os
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+# mail
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'h.noma.r.s@gmail.com'
+EMAIL_HOST_PASSWORD = '8810kamo3'

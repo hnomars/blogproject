@@ -20,7 +20,6 @@
     <div class='container'>
         <div class='card'>
             <h2 class="p-3 mb-2 bg-success text-white">今日は{{ todaystr }}です</h2>
-            <p>{% url "https://docs.google.com/presentation/d/1Rt5SwNzK1gqk0KPfck_q6UGiiPB81DZXyKSYmY2nVqM/edit?usp=sharing" % }</p>
         <div class="card-body">
             <body>
                 <p>
@@ -47,7 +46,9 @@
                         <a class="btn btn-warning" href="{% url 'St_create' %}" role="button">今日の得点表(新規)</a>
                     {% endif %}
                     <h5></h5>
-
+                    
+                    <h5>SRM・ストレスが完了してから送ってください</h5>
+                    <a class="btn btn-success" href="{% url 'index' %}" role="button">メールを送る</a>
                 
                 <h5>嫌な目に合ったら<a class="btn btn-info" href="{% url 'Moni_Create' %}" role="button">モニタリングの作成</a></h5>
                 <h5>不安恐怖怒り<a class="btn btn-info" href="{% url 'Exer_Create' %}" role="button">考えを柔軟する</a></h5>
