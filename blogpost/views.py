@@ -411,6 +411,7 @@ def csvExport(request):
 def index(request):
     today = str(datetime.date.today())
     res = ""
+    point = ""
     testlist = StPointModel.objects.all().filter(point_date=today)
     for i in testlist:
         point = i.sumpoint
@@ -419,9 +420,9 @@ def index(request):
         res = "ストレスポイント未入力です"
     else :
         print(point)
+        if int(point) >= 250:
+            pointover = "ストレスの多い一日でした（250点以上）"
 
-    if point >= 250:
-        pointover = "ストレスの多い一日でした（250点以上）"
 
     SRMlist = SRMModel.objects.all().filter(SRM_date=today)
 
@@ -447,19 +448,17 @@ def index(request):
             ]
         print(moodreview[int(moodpoint)+5])
 
-
-    """題名"""
-    subject = str(today)+"の報告"
-    """本文"""
-    message = "はやとです(^O^)\n今日のストレス得点は "+str(point)+" です。\n"+str(pointover)+"\n今日の躁鬱度は " +str(moodpoint)+ "です。\n"+moodreview[int(moodpoint)+5]
-    """送信元メールアドレス"""
-    from_email = "h.noma.r.s@gmail.com"
-    """宛先メールアドレス"""
-    recipient_list = [
-        "h.noma.r.s@gmail.com"
-    ]
-
     if res == "":
+        """題名"""
+        subject = str(today)+"の報告"
+        """本文"""
+        message = "はやとです(^O^)\n今日のストレス得点は "+str(point)+" です。\n"+str(pointover)+"\n今日の躁鬱度は " +str(moodpoint)+ "です。\n"+moodreview[int(moodpoint)+5]
+        """送信元メールアドレス"""
+        from_email = "h.noma.r.s@gmail.com"
+        """宛先メールアドレス"""
+        recipient_list = [
+            "h.noma.r.s@gmail.com"
+        ]
         send_mail(subject, message, from_email, recipient_list)
         res = "送信成功しました"
 
